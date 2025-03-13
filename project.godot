@@ -32,6 +32,7 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
+"res://data/": "purple",
 "res://documentation/": "gray",
 "res://globals/": "orange",
 "res://schedule/": "blue"
