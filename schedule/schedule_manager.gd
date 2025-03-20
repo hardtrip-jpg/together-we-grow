@@ -24,8 +24,12 @@ func command_schedule(days: String, max_day_in_week : String) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		for x : ScheduleSlot in can_activate:
-			x.activate()
+			var event_name := ""
+			if x.pos == cur_pos:
+				event_name = test.current_name
+			x.activate(event_name)
 			cur_map.erase(x.pos)
+				
 			
 
 func init_schedule(days : int, max_day_in_week : int) -> void:
@@ -69,7 +73,7 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 		
 		
 	margin_container.add_child(week_holder)
-	add_child(margin_container)
+	add_child.call_deferred(margin_container)
 
 func set_active_pos(pos: Vector2) -> void:
 	can_activate = []

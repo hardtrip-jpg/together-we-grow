@@ -42,7 +42,13 @@ func colour_switch(switch : bool) -> void:
 	else:
 		tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 
-func activate() -> void:
+func activate(event : String) -> void:
+	if event.length() > 1:
+		var label := Label.new()
+		label.text = event
+		self.add_child(label)
+	
+	
 	active = true
 	if tween && tween.is_running():
 		tween.kill()

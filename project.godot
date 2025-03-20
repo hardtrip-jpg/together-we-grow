@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="TogetherWeGrow"
+run/main_scene="uid://brh8k65ai3tmv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=45
 config/icon="res://icon.svg"
 
 [autoload]
 
-SignalManager="*res://globals/SignalManager.gd"
+SignalManager="*res://globals/signal_manager.gd"
 Prototype="*res://scripts/prototype_manager.gd"
 Console="*res://addons/console/console.gd"
 
