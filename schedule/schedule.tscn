@@ -1,11 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://brh8k65ai3tmv"]
+[gd_scene load_steps=3 format=3 uid="uid://brh8k65ai3tmv"]
 
 [ext_resource type="Script" uid="uid://bmuavit5nlv3m" path="res://schedule/schedule_manager.gd" id="1_e06vy"]
-[ext_resource type="Script" path="res://globals/state_machine.gd" id="2_3y3ml"]
-[ext_resource type="Script" uid="uid://rh7drblw4pcs" path="res://schedule/states/generate_state.gd" id="3_q0wcy"]
-[ext_resource type="Script" uid="uid://b1yeg6oi7o1ra" path="res://schedule/states/idle_state.gd" id="4_ff1ks"]
-[ext_resource type="Script" uid="uid://c8yu67fa6321l" path="res://schedule/states/holding_state.gd" id="5_blcid"]
-[ext_resource type="Script" uid="uid://4jod7c2hqfuf" path="res://schedule/states/place_state.gd" id="6_shfks"]
 
 [sub_resource type="Theme" id="Theme_05yhm"]
 BoxContainer/constants/separation = 8
@@ -45,20 +40,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-script = ExtResource("2_3y3ml")
-CURRENT_STATE = NodePath("Generate")
-
-[node name="Generate" type="Node" parent="StateMachine" node_paths=PackedStringArray("schedule")]
-script = ExtResource("3_q0wcy")
-schedule = NodePath("../..")
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("4_ff1ks")
-
-[node name="Holding" type="Node" parent="StateMachine"]
-script = ExtResource("5_blcid")
-
-[node name="Place" type="Node" parent="StateMachine"]
-script = ExtResource("6_shfks")

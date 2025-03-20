@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TogetherWeGrow"
-run/main_scene="uid://brh8k65ai3tmv"
+run/main_scene="uid://d0h5267lvtjkj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=45
 config/icon="res://icon.svg"

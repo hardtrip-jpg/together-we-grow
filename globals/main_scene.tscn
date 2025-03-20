@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0h5267lvtjkj"]
+
+[ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
+[ext_resource type="Script" uid="uid://bxmjgbdhtdqgs" path="res://globals/state_machine.gd" id="1_qc1yn"]
+[ext_resource type="Script" uid="uid://chcgesmdjhdd7" path="res://globals/state.gd" id="2_hkxpy"]
+[ext_resource type="Script" uid="uid://b6rmslkoeb5qx" path="res://globals/states/loading_state.gd" id="3_qp52p"]
+[ext_resource type="Script" uid="uid://do65o2xsnrgm7" path="res://globals/states/play_schedule_state.gd" id="4_yw4hp"]
+[ext_resource type="Script" uid="uid://cs3r32eldjjv0" path="res://globals/states/check_schedule.gd" id="5_qp52p"]
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Schedule" parent="." instance=ExtResource("1_hkxpy")]
+visible = false
+layout_mode = 1
+
+[node name="GameStates" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("1_qc1yn")
+CURRENT_STATE = NodePath("Loading")
+metadata/_custom_type_script = "uid://bxmjgbdhtdqgs"
+
+[node name="Loading" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
+script = ExtResource("3_qp52p")
+schedule = NodePath("../../Schedule")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="PlaySchedule" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
+script = ExtResource("4_yw4hp")
+schedule = NodePath("../../Schedule")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="CheckSchedule" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
+script = ExtResource("5_qp52p")
+schedule = NodePath("../../Schedule")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="Event" type="Node" parent="GameStates"]
+script = ExtResource("2_hkxpy")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="Paused" type="Node" parent="GameStates"]
+script = ExtResource("2_hkxpy")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"

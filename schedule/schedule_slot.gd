@@ -47,7 +47,7 @@ func activate(event : String) -> void:
 		var label := Label.new()
 		label.text = event
 		self.add_child(label)
-	
+	print("huh")
 	
 	active = true
 	if tween && tween.is_running():

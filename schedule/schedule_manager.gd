@@ -12,6 +12,7 @@ var can_activate := []
 
 var selected : ScheduleItem
 
+signal schedule_set
 
 func _ready() -> void:
 	Console.add_command("sche", command_schedule, ["Days", "Max"], 2)
@@ -20,13 +21,19 @@ func command_schedule(days: String, max_day_in_week : String) -> void:
 	init_schedule(int(days), int(max_day_in_week))
 
 func _input(event: InputEvent) -> void:
+	if visible == false: return
+	
 	if event.is_action_pressed("ui_accept"):
+		var did : bool = false
 		for x : ScheduleSlot in can_activate:
 			var event_name := ""
 			if x.pos == cur_pos:
+				did = true
 				event_name = selected.current_name
 			x.activate(event_name)
 			cur_map.erase(x.pos)
+		if did:
+			schedule_set.emit()
 
 func init_schedule(days : int, max_day_in_week : int) -> void:
 	print('Days: ', days)

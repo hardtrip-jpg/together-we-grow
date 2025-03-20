@@ -39,3 +39,7 @@
 ##### Poor
 #### Suburban
 #### Rural
+
+## What ifs?
+- Can your children meet other people and how does that impact your game?
+
