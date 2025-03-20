@@ -10,13 +10,11 @@ var cur_map := []
 var all_slots := []
 var can_activate := []
 
-var test : ScheduleItem
+var selected : ScheduleItem
 
 
 func _ready() -> void:
 	Console.add_command("sche", command_schedule, ["Days", "Max"], 2)
-	test = ScheduleItem.new()
-	schedule_inventory.add_child(test)
 
 func command_schedule(days: String, max_day_in_week : String) -> void:
 	init_schedule(int(days), int(max_day_in_week))
@@ -26,11 +24,9 @@ func _input(event: InputEvent) -> void:
 		for x : ScheduleSlot in can_activate:
 			var event_name := ""
 			if x.pos == cur_pos:
-				event_name = test.current_name
+				event_name = selected.current_name
 			x.activate(event_name)
 			cur_map.erase(x.pos)
-				
-			
 
 func init_schedule(days : int, max_day_in_week : int) -> void:
 	print('Days: ', days)
@@ -86,8 +82,11 @@ func set_active_pos(pos: Vector2) -> void:
 	var good := true
 	
 	var checked_pos := []
-
-	for x : Vector2 in test.positions:
+	
+	if !selected:
+		return
+	
+	for x : Vector2 in selected.positions:
 		var cur_check := pos + x
 		if cur_map.find(cur_check) == -1:
 			good = false

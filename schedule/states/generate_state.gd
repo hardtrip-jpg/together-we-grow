@@ -9,3 +9,4 @@ func enter(previous_state : State) -> void:
 	var days := randi_range(10, 13) + max
 	
 	schedule.init_schedule(days, max)
+	
