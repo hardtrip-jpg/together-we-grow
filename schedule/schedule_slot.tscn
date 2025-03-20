@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://csyr4o1d3y0j8"]
+
+[ext_resource type="Script" uid="uid://dyvn2ptmcfrqg" path="res://schedule/schedule_slot.gd" id="1_smqfc"]
+
+[node name="ScheduleSlot" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_smqfc")
