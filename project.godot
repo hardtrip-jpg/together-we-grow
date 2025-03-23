@@ -42,8 +42,10 @@ folder_colors={
 "res://addons/": "gray",
 "res://data/": "purple",
 "res://documentation/": "gray",
+"res://events/": "pink",
 "res://globals/": "orange",
 "res://scenes/": "pink",
 "res://schedule/": "blue",
-"res://scripts/": "green"
+"res://scripts/": "green",
+"res://ui/": "red"
 }
