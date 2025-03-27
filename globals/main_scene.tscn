@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0h5267lvtjkj"]
+[gd_scene load_steps=16 format=3 uid="uid://d0h5267lvtjkj"]
 
 [ext_resource type="Shader" uid="uid://jvqt886jrtm4" path="res://addons/ursc/canvas_item/dithering.gdshader" id="1_06tgn"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://drjqff5dh6b8p" path="res://ui/main_menu.tscn" id="4_gd4ly"]
 [ext_resource type="Script" uid="uid://do65o2xsnrgm7" path="res://globals/states/play_schedule_state.gd" id="4_yw4hp"]
 [ext_resource type="PackedScene" uid="uid://nte5pdx11vy4" path="res://ui/pause_menu.tscn" id="5_b1t4u"]
-[ext_resource type="Script" uid="uid://cs3r32eldjjv0" path="res://globals/states/check_schedule.gd" id="5_qp52p"]
+[ext_resource type="Script" uid="uid://cs3r32eldjjv0" path="res://globals/states/create_event_list_state.gd" id="5_qp52p"]
 [ext_resource type="PackedScene" uid="uid://cu1hdohyv52yr" path="res://ui/loading_screen.tscn" id="6_b1t4u"]
 [ext_resource type="Script" uid="uid://dsx303jtx7qe7" path="res://globals/states/pause_menu_state.gd" id="6_c70f3"]
 [ext_resource type="Script" uid="uid://djcihd6844qlv" path="res://globals/states/main_menu_state.gd" id="7_06tgn"]
+[ext_resource type="PackedScene" uid="uid://bpqmavuw4i6xh" path="res://ui/dialogue.tscn" id="7_ot8wt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ulhs6"]
 shader = ExtResource("1_06tgn")
@@ -44,6 +45,7 @@ render_target_update_mode = 4
 
 [node name="Schedule" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_hkxpy")]
 visible = false
+mouse_filter = 1
 
 [node name="MainMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_gd4ly")]
 visible = false
@@ -54,39 +56,33 @@ visible = false
 [node name="LoadingScreen" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_b1t4u")]
 visible = false
 
-[node name="Dialogue" type="Control" parent="SubViewportContainer/SubViewport"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Dialogue" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_ot8wt")]
+visible = false
 
-[node name="DialogueChoice" type="Control" parent="SubViewportContainer/SubViewport"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="EventSceneHolder" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
 [node name="GameStates" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("1_qc1yn")
-CURRENT_STATE = NodePath("Loading")
+CURRENT_STATE = NodePath("PlaySchedule")
 metadata/_custom_type_script = "uid://bxmjgbdhtdqgs"
-
-[node name="Loading" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
-script = ExtResource("3_qp52p")
-schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
-metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="PlaySchedule" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
 script = ExtResource("4_yw4hp")
 schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="CheckSchedule" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
+[node name="CreateEventList" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
 script = ExtResource("5_qp52p")
 schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="EventScene" type="Node" parent="GameStates"]
+[node name="LoadNextEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("loading_screen", "event_holder")]
+script = ExtResource("3_qp52p")
+loading_screen = NodePath("../../SubViewportContainer/SubViewport/LoadingScreen")
+event_holder = NodePath("../../SubViewportContainer/SubViewport/EventSceneHolder")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="PlayEvent" type="Node" parent="GameStates"]
 script = ExtResource("2_hkxpy")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
@@ -95,5 +91,3 @@ script = ExtResource("6_c70f3")
 
 [node name="MainMenu" type="Node" parent="GameStates"]
 script = ExtResource("7_06tgn")
-
-[node name="Debug" type="Node" parent="GameStates"]

@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 SignalManager="*res://globals/signal_manager.gd"
 Prototype="*res://scripts/prototype_manager.gd"
 Console="*res://addons/console/console.gd"
+Global="*res://globals/global.gd"
 
 [debug]
 
@@ -49,3 +50,12 @@ folder_colors={
 "res://scripts/": "green",
 "res://ui/": "red"
 }
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

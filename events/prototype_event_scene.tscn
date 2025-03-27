@@ -1,0 +1,305 @@
+[gd_scene load_steps=21 format=4 uid="uid://dghckoj71q55x"]
+
+[ext_resource type="PackedScene" uid="uid://dqu1lcytm47pp" path="res://events/base_event.tscn" id="1_kfntv"]
+[ext_resource type="Texture2D" uid="uid://bv0alqc82kq3s" path="res://events/assets/city_scape_1/building_texturex.png" id="2_krl3t"]
+[ext_resource type="Texture2D" uid="uid://by6lahd22cnf1" path="res://events/assets/city_scape_1/DayEnvironmentHDRI052_1K-TONEMAPPED.png" id="3_kp4rj"]
+[ext_resource type="Texture2D" uid="uid://bk1qugubwbklp" path="res://events/assets/city_scape_1/Ground-Urban_Texture_A_P4110676-1205728448.png" id="3_pwqfc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unhco"]
+resource_name = "City"
+cull_mode = 2
+albedo_texture = ExtResource("2_krl3t")
+texture_filter = 2
+metadata/extras = {
+"yp": {
+"active_ypaint_node": ""
+}
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_g5xsv"]
+_surfaces = [{
+"aabb": AABB(-3.46493, -10.4247, -3.46493, 6.92985, 20.8494, 6.92985),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a5f8f"]
+resource_name = "city_scape_1_Cube_001"
+_surfaces = [{
+"aabb": AABB(-3.46493, -10.4247, -3.46493, 6.92985, 20.8494, 6.92985),
+"attribute_data": PackedByteArray("VoMmVCpl+zVWg/s1KmUmVDSxS//whiCANLEggPCGS/8/2s/9cbAIgD/aCIBxsM/9aTq1JpMl3hFpOt4RkyW1JgOyuvtCiRyBA7IcgUKJuvsYxs3+6pvlfxjG5X/qm83+"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_unhco"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAAVNUAAP////9U1QAA//8AAFTV////////VNX//wAA//8AgAAA/////wCA////////AIAAAAAA//8AgAAAAAD///+/AAD//wAA/78AAP//////vwAAAAAAAP+/AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX//wAAAAD/v/////////+//////wAA/7///wAA////vwAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//VNWqKlTVqipU1aoqVNWqKv9/////f////3////9/////f////3////9/////f///VFVUVVRVVFVUVVRVVFVUVf9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_g5xsv")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_h6yir"]
+_surfaces = [{
+"aabb": AABB(-4.11309, -10.8657, -4.11309, 8.22618, 21.7314, 8.22618),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bqov6"]
+resource_name = "city_scape_1_Cube_002"
+_surfaces = [{
+"aabb": AABB(-4.11309, -10.8657, -4.11309, 8.22618, 21.7314, 8.22618),
+"attribute_data": PackedByteArray("WcTZy52rHLNZxByznavZy8VybJd3ALHCdwBsl8VyscIJc+2W7gAfwu4A7ZYJcx/ClubaG9nNHQOW5h0D2c3aG+1vRZZPASXATwFFlu1vJcBodx6WCAHtwggBHpZod+3C"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_unhco"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAAVNUAAP////9U1QAA//8AAFTV////////VNX//wAA////vwAA//////+//////////78AAAAA////vwAAAAD//1TVAAD//wAAVNUAAP////9U1QAAAAAAAFTVAAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX//wAAAABU1f///////1TV/////wAAVNX//wAA//9U1QAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//VNWqKlTVqipU1aoqVNWqKv9//3//f/9//3//f/9//39UVaqqVFWqqlRVqqpUVaqqVFVUVVRVVFVUVVRVVFVUVaqqVFWqqlRVqqpUVaqqVFX/P/+//z//v/8//7//P/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_h6yir")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hl1l8"]
+_surfaces = [{
+"aabb": AABB(-5.12335, -13.8952, -5.12335, 10.2467, 32.3193, 10.2467),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_phnog"]
+resource_name = "city_scape_1_Cube_003"
+_surfaces = [{
+"aabb": AABB(-5.12335, -13.8952, -5.12335, 10.2467, 32.3193, 10.2467),
+"attribute_data": PackedByteArray("77xBth+ecZfvvHGXH55BthU87oBVZOD/FTzg/1Vk7oAtT4mAPXfl/i1P5f49d4mAHbXPHk2WAAAdtQAATZbPHrU8hIMZZML/tTzC/xlkhIOCFuR/7T5h/4IWYf/tPuR/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_unhco"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAAVNUAAP////9U1QAA//8AAFTV////////VNX//wAA/////wAA//////////////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP//AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX//wAAAAD//////////////////wAA/////wAA/////wAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//VNWqKlTVqipU1aoqVNWqKv9//3//f/9//3//f/9//3//P/9//z//f/8//3//P/9/VFVUVVRVVFVUVVRVVFVUVf+//3//v/9//7//f/+//3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hl1l8")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5s7yg"]
+_surfaces = [{
+"aabb": AABB(-7.61384, -16.5052, -7.61384, 15.2277, 33.0104, 15.2277),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("Xsv//wAAAACgNP////8AAAAA//+gNAAAoDQAAP//AAD/////XssAAAAAAACgNAAAXssAAAAAAAD//wAAXssAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xr54t"]
+resource_name = "city_scape_1_Cube_004"
+_surfaces = [{
+"aabb": AABB(-7.61384, -16.5052, -7.61384, 15.2277, 33.0104, 15.2277),
+"attribute_data": PackedByteArray("4OHczKf/ie3g4Yntp//czNTU04D///T91NT0/f//04Ay////XtPwgDL/8IBe0///36QfwP9/qJffpKiX/38fwDz/T/x21FCAPP9QgHbUT/w51Ip/yv7u+jnU7vrK/op/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_unhco"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(1.019, 0.928597, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("Xsv//wAApc+gNP////+lzwAA//+gNKXP/////17Lpc///wAAXsv//6A0/////////////17L//+gNAAA/////6A0AAD//661AAD//6A0rrWgNP////+utQAAAACgNK61AAAAAKA0hNv//wAAXsuE217LAAAAAITboDQAAP//hNteywAAAABQyv////9ey1DKXsv//wAAUMr//wAAXstQygAAAACgNP//Xsv//wAA//8AAP//oDT//17LAAAAAP//ObLipjmy4qY5suKmObLipnOO/39zjv9/c47/f3OO/3//f////3////9/////f///R1zbUUdc21FHXNtRR1zbUf9/AAD/fwAA/38AAP9/AAD//3OO//9zjv//c47//3OO")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5s7yg")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ij3la"]
+_surfaces = [{
+"aabb": AABB(-7.03575, -10.5773, -5.84654, 11.6931, 25.3678, 11.6931),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_du2mu"]
+resource_name = "city_scape_1_Cube_005"
+_surfaces = [{
+"aabb": AABB(-7.03575, -10.5773, -5.84654, 11.6931, 25.3678, 11.6931),
+"attribute_data": PackedByteArray("EYDGPlVnCSYRgAkmVWfGPsaFLQG7svJ3xoXyd7uyLQHS0OcCv/zwdtLQ8Ha//OcClubaG9nNHQOW5h0D2c3aGyeohwBn1RB4J6gQeGfVhwDEwzcBq/DVd8TD1Xer8DcB"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_unhco"),
+"name": "City",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAAVNUAAP////9U1QAA//8AAFTV////////VNX//wAA/////wAA//////////////////8AAAAA/////wAAAAD/////AAD//wAA//8AAP///////wAAAAAAAP//AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX//wAAAAD//////////////////wAA/////wAA/////wAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//VNWqKlTVqipU1aoqVNWqKv9//3//f/9//3//f/9//3//P/9//z//f/8//3//P/9/VFVUVVRVVFVUVVRVVFVUVf+//3//v/9//7//f/+//3////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ij3la")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gaxsq"]
+albedo_texture = ExtResource("3_pwqfc")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ynr7"]
+material = SubResource("StandardMaterial3D_gaxsq")
+size = Vector2(100, 100)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8avg8"]
+panorama = ExtResource("3_kp4rj")
+filter = false
+
+[sub_resource type="Sky" id="Sky_7yuei"]
+sky_material = SubResource("PanoramaSkyMaterial_8avg8")
+
+[sub_resource type="Environment" id="Environment_c8msg"]
+background_mode = 2
+sky = SubResource("Sky_7yuei")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 0.909804, 1)
+tonemap_mode = 4
+glow_enabled = true
+adjustment_enabled = true
+adjustment_contrast = 1.13
+adjustment_saturation = 1.35
+
+[node name="PrototypeEventScene" instance=ExtResource("1_kfntv")]
+
+[node name="Cityscape" type="Node3D" parent="." index="0"]
+
+[node name="city_scape_1" type="Node3D" parent="Cityscape" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.496965, 0)
+
+[node name="Cube_001" type="MeshInstance3D" parent="Cityscape/city_scape_1" index="0"]
+transform = Transform3D(0.70337, 0, 0.710824, 0, 1, 0, -0.710824, 0, 0.70337, -2.38254, 10.4072, -9.43534)
+mesh = SubResource("ArrayMesh_a5f8f")
+skeleton = NodePath("")
+
+[node name="Cube_002" type="MeshInstance3D" parent="Cityscape/city_scape_1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54226, 11.2048, -2.27147)
+mesh = SubResource("ArrayMesh_bqov6")
+skeleton = NodePath("")
+
+[node name="Cube_003" type="MeshInstance3D" parent="Cityscape/city_scape_1" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10074, 13.4821, -22.138)
+mesh = SubResource("ArrayMesh_phnog")
+skeleton = NodePath("")
+
+[node name="Cube_004" type="MeshInstance3D" parent="Cityscape/city_scape_1" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.7377, 16.2435, -16.1961)
+mesh = SubResource("ArrayMesh_xr54t")
+skeleton = NodePath("")
+
+[node name="Cube_005" type="MeshInstance3D" parent="Cityscape/city_scape_1" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0277, 10.582, -8.26488)
+mesh = SubResource("ArrayMesh_du2mu")
+skeleton = NodePath("")
+
+[node name="city_scape_2" type="Node3D" parent="Cityscape" index="1"]
+transform = Transform3D(-0.899482, 0, 0.436959, 0, 1, 0, -0.436959, 0, -0.899482, -24.1578, -3.46315, -42.0876)
+
+[node name="Cube_001" type="MeshInstance3D" parent="Cityscape/city_scape_2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38254, 10.4072, -9.43534)
+mesh = SubResource("ArrayMesh_a5f8f")
+skeleton = NodePath("")
+
+[node name="Cube_002" type="MeshInstance3D" parent="Cityscape/city_scape_2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.54226, 10.582, -2.27147)
+mesh = SubResource("ArrayMesh_bqov6")
+skeleton = NodePath("")
+
+[node name="Cube_003" type="MeshInstance3D" parent="Cityscape/city_scape_2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24115, 11.7915, 17.9429)
+mesh = SubResource("ArrayMesh_phnog")
+skeleton = NodePath("")
+
+[node name="Cube_004" type="MeshInstance3D" parent="Cityscape/city_scape_2" index="3"]
+transform = Transform3D(0.70234, 0, -0.711842, 0, 1, 0, 0.711842, 0, 0.70234, 9.7377, 16.2435, -16.1961)
+mesh = SubResource("ArrayMesh_xr54t")
+skeleton = NodePath("")
+
+[node name="Cube_005" type="MeshInstance3D" parent="Cityscape/city_scape_2" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7044, 10.582, -2.27147)
+mesh = SubResource("ArrayMesh_du2mu")
+skeleton = NodePath("")
+
+[node name="city_scape_3" type="Node3D" parent="Cityscape" index="2"]
+transform = Transform3D(-0.899482, 0, 0.436959, 0, 1, 0, -0.436959, 0, -0.899482, 25.6488, -3.46315, -45.557)
+
+[node name="Cube_001" type="MeshInstance3D" parent="Cityscape/city_scape_3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5919, 10.4072, -30.3129)
+mesh = SubResource("ArrayMesh_a5f8f")
+skeleton = NodePath("")
+
+[node name="Cube_002" type="MeshInstance3D" parent="Cityscape/city_scape_3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.69223, 10.582, -15.235)
+mesh = SubResource("ArrayMesh_bqov6")
+skeleton = NodePath("")
+
+[node name="Cube_003" type="MeshInstance3D" parent="Cityscape/city_scape_3" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.24115, 11.7915, 17.9429)
+mesh = SubResource("ArrayMesh_phnog")
+skeleton = NodePath("")
+
+[node name="Cube_004" type="MeshInstance3D" parent="Cityscape/city_scape_3" index="3"]
+transform = Transform3D(0.70234, 0, -0.711842, 0, 1, 0, 0.711842, 0, 0.70234, 22.4603, 16.2435, -6.55513)
+mesh = SubResource("ArrayMesh_xr54t")
+skeleton = NodePath("")
+
+[node name="Cube_005" type="MeshInstance3D" parent="Cityscape/city_scape_3" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7044, 10.582, -2.27147)
+mesh = SubResource("ArrayMesh_du2mu")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cityscape" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67452, 0, -26.214)
+mesh = SubResource("PlaneMesh_5ynr7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_c8msg")
+
+[node name="Camera3D" type="Camera3D" parent="." index="2"]
+transform = Transform3D(0.820761, 0, 0.571272, 0, 1, 0, -0.571272, 0, 0.820761, -0.175862, 1.56215, 9.72498)
+fov = 92.1087

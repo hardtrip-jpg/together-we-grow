@@ -7,6 +7,8 @@ var day : int
 var tween : Tween
 var active : bool = false
 
+var event : ScheduleItemResource
+
 var parent_func : Callable
 
 func _init(x : int, y : int, a_day : int) -> void:
@@ -42,12 +44,11 @@ func colour_switch(switch : bool) -> void:
 	else:
 		tween.tween_property(self, "modulate", Color.WHITE, 0.1)
 
-func activate(event : String) -> void:
-	if event.length() > 1:
+func activate(p_event : String) -> void:
+	if p_event.length() > 1:
 		var label := Label.new()
-		label.text = event
+		label.text = p_event
 		self.add_child(label)
-	print("huh")
 	
 	active = true
 	if tween && tween.is_running():

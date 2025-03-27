@@ -4,12 +4,13 @@
 
 [sub_resource type="Theme" id="Theme_05yhm"]
 BoxContainer/constants/separation = 8
+Button/colors/font_hover_color = Color(0.802953, 0.996864, 0.974024, 1)
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
-[node name="Schedule" type="Control" node_paths=PackedStringArray("schedule_inventory")]
+[node name="Schedule" type="Control" node_paths=PackedStringArray("schedule_inventory", "main_vbox")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,22 +21,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_05yhm")
 script = ExtResource("1_e06vy")
-schedule_inventory = NodePath("MarginContainer/ScrollContainer/HBoxContainer")
+schedule_inventory = NodePath("VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer")
+main_vbox = NodePath("VBoxContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.746
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.0800171
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

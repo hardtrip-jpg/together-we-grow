@@ -2,6 +2,7 @@ extends Control
 class_name ScheduleManager
 
 @export var schedule_inventory : HBoxContainer
+@export var main_vbox : VBoxContainer
 
 var cur_pos : Vector2
 var margin_container : MarginContainer
@@ -10,39 +11,31 @@ var cur_map := []
 var all_slots := []
 var can_activate := []
 
+var placed_items := {}
+
 var selected : ScheduleItem
 
 signal schedule_set
 
 func _ready() -> void:
-	Console.add_command("sche", command_schedule, ["Days", "Max"], 2)
+	Console.add_command("sche", command_schedule, ["Days", "Max", "Age", "Amount"], 4)
 
-func command_schedule(days: String, max_day_in_week : String) -> void:
+func command_schedule(days: String, max_day_in_week : String, age: String, amount: String) -> void:
 	init_schedule(int(days), int(max_day_in_week))
+	init_items(int(age), int(amount))
 
 func _input(event: InputEvent) -> void:
 	if visible == false: return
 	
-	if event.is_action_pressed("ui_accept"):
-		var did : bool = false
-		for x : ScheduleSlot in can_activate:
-			var event_name := ""
-			if x.pos == cur_pos:
-				did = true
-				event_name = selected.current_name
-			x.activate(event_name)
-			cur_map.erase(x.pos)
-		if did:
-			schedule_set.emit()
+	if event.is_action_pressed("ui_accept") && selected:
+		place_active_item()
+
 
 func init_schedule(days : int, max_day_in_week : int) -> void:
 	print('Days: ', days)
 	if margin_container: margin_container.queue_free()
-	
 	cur_map = []
-	
 	var counter := 1
-	
 	var days_left := days
 	var weeks := int(ceil(float(days) / float(max_day_in_week)))
 	
@@ -63,7 +56,6 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 		
 		days_left -= days_to_draw
 		
-		
 		for x in days_to_draw:
 			var new_day := ScheduleSlot.new(x, i, counter)
 			new_day.parent_func = set_active_pos
@@ -73,10 +65,22 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 			new_week.add_child(new_day)
 		week_holder.add_child(new_week)
 		
-		
-		
 	margin_container.add_child(week_holder)
-	add_child.call_deferred(margin_container)
+	main_vbox.add_child(margin_container)
+
+func init_items(age : int, amount : int) -> void:
+	randomize()
+	var available_items := []
+	for x in Global.all_schedule_items:
+		if x.match_age(age):
+			available_items.append(x)
+	
+	for x in amount:
+		var index := randi_range(0,(available_items.size() - 1))
+		var new_item := ScheduleItem.new(available_items[index])
+		new_item.set_item.connect(set_active_item)
+		schedule_inventory.add_child(new_item)
+		available_items.remove_at(index)
 
 func set_active_pos(pos: Vector2) -> void:
 	can_activate = []
@@ -84,14 +88,12 @@ func set_active_pos(pos: Vector2) -> void:
 		x.colour_switch(false)
 	
 	cur_pos = pos
-	print("On: ", pos)
+	
+	if !selected or cur_pos == Vector2(-1,-1):
+		return
 	
 	var good := true
-	
 	var checked_pos := []
-	
-	if !selected:
-		return
 	
 	for x : Vector2 in selected.positions:
 		var cur_check := pos + x
@@ -106,5 +108,21 @@ func set_active_pos(pos: Vector2) -> void:
 		x.colour_switch(true)
 		if good:
 			can_activate.append(x)
-	
-	print("Result is ", good)
+
+func set_active_item(item : ScheduleItem) -> void:
+	selected = item
+	print(selected.resource.item_name)
+
+func place_active_item() -> void:
+	var did : bool = false
+	for x : ScheduleSlot in can_activate:
+		var event_name := ""
+		if x.pos == cur_pos:
+			did = true
+			event_name = selected.resource.item_name
+		x.event = selected.resource
+		x.activate(event_name)
+		cur_map.erase(x.pos)
+	if did:
+		selected.queue_free()
+		schedule_set.emit()
