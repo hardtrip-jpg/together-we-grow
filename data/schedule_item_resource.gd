@@ -5,6 +5,7 @@ class_name ScheduleItemResource
 @export var schedule_positions : Array
 @export var required_age : Vector2
 @export var symbol : String
+@export var color : Color
 @export var stat_changes : Dictionary
 
 func _init(p_name := "", p_postion := [Vector2.ZERO], p_age := Vector2(1,10), p_symbol := "", p_stat := {}) -> void:

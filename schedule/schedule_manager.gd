@@ -1,8 +1,8 @@
 extends Control
 class_name ScheduleManager
 
-@export var schedule_inventory : HBoxContainer
-@export var main_vbox : VBoxContainer
+@export var schedule_inventory : VBoxContainer
+@export var schedule_holder : MarginContainer
 
 var cur_pos : Vector2
 var margin_container : MarginContainer
@@ -39,8 +39,6 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 	var days_left := days
 	var weeks := int(ceil(float(days) / float(max_day_in_week)))
 	
-	margin_container = MarginContainer.new()
-	margin_container.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var week_holder := VBoxContainer.new()
 	week_holder.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	
@@ -65,8 +63,7 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 			new_week.add_child(new_day)
 		week_holder.add_child(new_week)
 		
-	margin_container.add_child(week_holder)
-	main_vbox.add_child(margin_container)
+	schedule_holder.add_child(week_holder)
 
 func init_items(age : int, amount : int) -> void:
 	randomize()
@@ -85,7 +82,7 @@ func init_items(age : int, amount : int) -> void:
 func set_active_pos(pos: Vector2) -> void:
 	can_activate = []
 	for x : ScheduleSlot in all_slots:
-		x.colour_switch(false)
+		x.colour_switch(Color.WHITE)
 	
 	cur_pos = pos
 	
@@ -105,9 +102,11 @@ func set_active_pos(pos: Vector2) -> void:
 	for x : ScheduleSlot in all_slots:
 		if checked_pos.find(x.pos) == -1:
 			continue
-		x.colour_switch(true)
 		if good:
+			x.colour_switch(Color.GREEN)
 			can_activate.append(x)
+		else:
+			x.colour_switch(Color.RED)
 
 func set_active_item(item : ScheduleItem) -> void:
 	selected = item
@@ -121,8 +120,8 @@ func place_active_item() -> void:
 			did = true
 			event_name = selected.resource.item_name
 		x.event = selected.resource
-		x.activate(event_name)
+		x.activate(event_name, selected.resource.color)
 		cur_map.erase(x.pos)
 	if did:
 		selected.queue_free()
-		schedule_set.emit()
+		#schedule_set.emit()

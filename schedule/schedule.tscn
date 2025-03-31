@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brh8k65ai3tmv"]
+[gd_scene load_steps=7 format=3 uid="uid://brh8k65ai3tmv"]
 
 [ext_resource type="Script" uid="uid://bmuavit5nlv3m" path="res://schedule/schedule_manager.gd" id="1_e06vy"]
+[ext_resource type="Texture2D" uid="uid://c335rt60a818f" path="res://schedule/calendar_view.png" id="2_vi6l5"]
+[ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="3_po0un"]
 
 [sub_resource type="Theme" id="Theme_05yhm"]
 BoxContainer/constants/separation = 8
@@ -10,7 +12,19 @@ MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
 
-[node name="Schedule" type="Control" node_paths=PackedStringArray("schedule_inventory", "main_vbox")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi6l5"]
+bg_color = Color(1, 1, 1, 0.109804)
+
+[sub_resource type="Theme" id="Theme_vi6l5"]
+BoxContainer/constants/separation = 0
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 4
+Label/fonts/font = ExtResource("3_po0un")
+Panel/styles/panel = SubResource("StyleBoxFlat_vi6l5")
+
+[node name="Schedule" type="Control" node_paths=PackedStringArray("schedule_inventory", "schedule_holder")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,27 +35,45 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_05yhm")
 script = ExtResource("1_e06vy")
-schedule_inventory = NodePath("VBoxContainer/MarginContainer/ScrollContainer/HBoxContainer")
-main_vbox = NodePath("VBoxContainer")
+schedule_inventory = NodePath("HBoxContainer/Inventory/ScrollContainer/VBoxContainer")
+schedule_holder = NodePath("HBoxContainer/Schedule")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+texture = ExtResource("2_vi6l5")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+[node name="Schedule" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("Theme_vi6l5")
+theme_override_constants/margin_left = 131
+theme_override_constants/margin_top = 141
+theme_override_constants/margin_right = 110
+theme_override_constants/margin_bottom = 140
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Schedule"]
+layout_mode = 2
+
+[node name="Inventory" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(111, 0)
+layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Inventory"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Inventory/ScrollContainer"]
+layout_mode = 2

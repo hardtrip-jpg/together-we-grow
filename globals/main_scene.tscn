@@ -1,10 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://d0h5267lvtjkj"]
+[gd_scene load_steps=21 format=3 uid="uid://d0h5267lvtjkj"]
 
-[ext_resource type="Shader" uid="uid://jvqt886jrtm4" path="res://addons/ursc/canvas_item/dithering.gdshader" id="1_06tgn"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
 [ext_resource type="Script" uid="uid://bxmjgbdhtdqgs" path="res://globals/state_machine.gd" id="1_qc1yn"]
 [ext_resource type="Script" uid="uid://chcgesmdjhdd7" path="res://globals/state.gd" id="2_hkxpy"]
-[ext_resource type="Texture2D" uid="uid://cd0y2ijjx3qva" path="res://addons/ursc/canvas_item/dither.png" id="2_ulhs6"]
 [ext_resource type="Script" uid="uid://b6rmslkoeb5qx" path="res://globals/states/loading_state.gd" id="3_qp52p"]
 [ext_resource type="PackedScene" uid="uid://drjqff5dh6b8p" path="res://ui/main_menu.tscn" id="4_gd4ly"]
 [ext_resource type="Script" uid="uid://do65o2xsnrgm7" path="res://globals/states/play_schedule_state.gd" id="4_yw4hp"]
@@ -14,11 +12,28 @@
 [ext_resource type="Script" uid="uid://dsx303jtx7qe7" path="res://globals/states/pause_menu_state.gd" id="6_c70f3"]
 [ext_resource type="Script" uid="uid://djcihd6844qlv" path="res://globals/states/main_menu_state.gd" id="7_06tgn"]
 [ext_resource type="PackedScene" uid="uid://bpqmavuw4i6xh" path="res://ui/dialogue.tscn" id="7_ot8wt"]
+[ext_resource type="AudioStream" uid="uid://bww8jxsimm5ds" path="res://music/bpm124/drum_loop_0.wav" id="13_rv08n"]
+[ext_resource type="AudioStream" uid="uid://ba0ijcpbqtuer" path="res://music/bpm124/main-loop-babybells.wav" id="14_os1gl"]
+[ext_resource type="AudioStream" uid="uid://c17o5rjwx0e5q" path="res://music/bpm124/main-loop-bass-y.wav" id="15_7vtr8"]
+[ext_resource type="AudioStream" uid="uid://mb36i8135gcb" path="res://music/bpm124/main-loop-dreamy.wav" id="16_owj8a"]
+[ext_resource type="AudioStream" uid="uid://dr7yov1jowlgo" path="res://music/bpm124/main-loop-playful.wav" id="17_mm1kp"]
+[ext_resource type="AudioStream" uid="uid://b01cn4adu3hu2" path="res://music/bpm124/main-loop_subtle.wav" id="18_0w7fr"]
+[ext_resource type="Script" uid="uid://d1vmpmq5dlpab" path="res://music/scripts/bg_music_manager.gd" id="19_os1gl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulhs6"]
-shader = ExtResource("1_06tgn")
-shader_parameter/color_depth = 16.0
-shader_parameter/dithering_pattern_texture = ExtResource("2_ulhs6")
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_o5g26"]
+stream_count = 6
+stream_0/stream = ExtResource("13_rv08n")
+stream_0/volume = -60.0
+stream_1/stream = ExtResource("14_os1gl")
+stream_1/volume = -60.0
+stream_2/stream = ExtResource("15_7vtr8")
+stream_2/volume = -60.0
+stream_3/stream = ExtResource("16_owj8a")
+stream_3/volume = -60.0
+stream_4/stream = ExtResource("17_mm1kp")
+stream_4/volume = -60.0
+stream_5/stream = ExtResource("18_0w7fr")
+stream_5/volume = -60.0
 
 [node name="MainScene" type="Control"]
 texture_filter = 1
@@ -30,7 +45,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_ulhs6")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,3 +105,11 @@ script = ExtResource("6_c70f3")
 
 [node name="MainMenu" type="Node" parent="GameStates"]
 script = ExtResource("7_06tgn")
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="AudioManager"]
+stream = SubResource("AudioStreamSynchronized_o5g26")
+script = ExtResource("19_os1gl")
+
+[node name="SFX" type="AudioStreamPlayer" parent="AudioManager"]
