@@ -1,12 +1,42 @@
-[gd_scene format=3 uid="uid://bpqmavuw4i6xh"]
+[gd_scene load_steps=6 format=3 uid="uid://bpqmavuw4i6xh"]
 
-[node name="Dialogue" type="Control"]
+[ext_resource type="Script" uid="uid://c5vt26h43wlwd" path="res://ui/dialogue_manager.gd" id="1_fm7tp"]
+[ext_resource type="FontFile" uid="uid://b3vvh6i8eu6se" path="res://ui/assets/Not Jam Mono Casual 10.ttf" id="1_xl33q"]
+[ext_resource type="Script" uid="uid://cp4jiojt8x6fu" path="res://addons/rubonnek.dialogue_engine/demos/1. simple dialogue/simple_dialogue.gd" id="3_xyniw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyniw"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.733333)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_xyniw"]
+default_font = ExtResource("1_xl33q")
+default_font_size = 20
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_xyniw")
+RichTextLabel/colors/font_shadow_color = Color(0.109804, 0.109804, 0.109804, 0.572549)
+RichTextLabel/fonts/mono_font = ExtResource("1_xl33q")
+
+[node name="Dialogue" type="Control" node_paths=PackedStringArray("name_label", "dialogue_label")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_xyniw")
+script = ExtResource("1_fm7tp")
+name_label = NodePath("MarginContainer/VBoxContainer/NameHolder/MarginContainer2/NameLabel")
+dialogue_label = NodePath("MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2/DialogueLabel")
+dialogue_gdscript = ExtResource("3_xyniw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -22,29 +52,29 @@ theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+[node name="NameHolder" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/NameHolder"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 3
 
-[node name="NameText" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer2"]
+[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/NameHolder/MarginContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
-text = "name"
+bbcode_enabled = true
+text = "[b]KREVIN[/b]"
+fit_content = true
+autowrap_mode = 0
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
@@ -54,6 +84,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="DialogueText" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
+[node name="DialogueLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2"]
 layout_mode = 2
-text = "Hey hows it goin??"
+size_flags_vertical = 4
+bbcode_enabled = true
+text = "this is some test dialogue WOO"
+fit_content = true
+
+[node name="LogAnimationPlayer" type="AnimationPlayer" parent="."]

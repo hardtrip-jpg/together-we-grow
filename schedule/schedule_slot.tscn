@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dyvn2ptmcfrqg" path="res://schedule/schedule_slot.gd" id="1_smqfc"]
 
 [node name="ScheduleSlot" type="Panel"]
-offset_right = 47.0
-offset_bottom = 42.0
+offset_right = 66.0
+offset_bottom = 45.0
 pivot_offset = Vector2(23, 20)
 script = ExtResource("1_smqfc")

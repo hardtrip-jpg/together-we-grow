@@ -32,12 +32,12 @@ func _init(x : int, y : int, a_day : int) -> void:
 	margin.add_theme_constant_override("margin_bottom", margin_value)
 	margin.add_theme_constant_override("margin_right", margin_value)
 	
-	margin.clip_contents
+	#margin.clip_contents
 	var label := Label.new()
 	label.text = str(day)
 	margin.add_child(label)
 	self.add_child(margin)
-	custom_minimum_size = Vector2(48,41)
+	custom_minimum_size = Vector2(69,44)
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 
 func mouse_enter() -> void:
@@ -59,7 +59,7 @@ func colour_switch(col : Color) -> void:
 	tween.tween_property(self, "modulate", col, 0.2)
 
 
-func activate(p_event : String, col : Color) -> void:
+func activate(_p_event : String, col : Color) -> void:
 	#if p_event.length() > 1:
 		#var label := Label.new()
 		#label.text = p_event

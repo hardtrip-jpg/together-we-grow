@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://brh8k65ai3tmv"]
 
 [ext_resource type="Script" uid="uid://bmuavit5nlv3m" path="res://schedule/schedule_manager.gd" id="1_e06vy"]
-[ext_resource type="Texture2D" uid="uid://c335rt60a818f" path="res://schedule/calendar_view.png" id="2_vi6l5"]
+[ext_resource type="Texture2D" uid="uid://repcdojo1qy4" path="res://schedule/calendar_view_up.png" id="2_po0un"]
 [ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="3_po0un"]
 
 [sub_resource type="Theme" id="Theme_05yhm"]
@@ -20,6 +20,7 @@ BoxContainer/constants/separation = 0
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 4
+Label/font_sizes/font_size = 19
 Label/fonts/font = ExtResource("3_po0un")
 Panel/styles/panel = SubResource("StyleBoxFlat_vi6l5")
 
@@ -45,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vi6l5")
+texture = ExtResource("2_po0un")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -59,9 +60,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_vi6l5")
-theme_override_constants/margin_left = 131
-theme_override_constants/margin_top = 141
-theme_override_constants/margin_right = 110
+theme_override_constants/margin_left = 79
+theme_override_constants/margin_top = 137
 theme_override_constants/margin_bottom = 140
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Schedule"]

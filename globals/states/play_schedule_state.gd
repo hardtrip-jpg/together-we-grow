@@ -8,7 +8,7 @@ func enter(_previous_state : State) -> void:
 	schedule.init_schedule(16, 5)
 	schedule.init_items(2,1)
 
-func update(delta : float) -> void:
+func update(_delta : float) -> void:
 	done()
 
 func done() -> void:

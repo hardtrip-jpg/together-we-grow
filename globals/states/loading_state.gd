@@ -15,7 +15,7 @@ func enter(_previous_state : State) -> void:
 	#loading_screen.show()
 	pass
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	var progress := []
 	var status := ResourceLoader.load_threaded_get_status(cur_event_path, progress)
 	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:

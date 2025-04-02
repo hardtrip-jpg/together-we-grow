@@ -1,10 +1,16 @@
-extends VBoxContainer
+extends Control
+class_name DialogueManager
+
+@export var name_label : RichTextLabel
+@export var dialogue_label : RichTextLabel
 
 @export var dialogue_gdscript : GDScript = null
 var dialogue_engine : DialogueEngine = null
 
 @onready var animation_player : AnimationPlayer = find_child("LogAnimationPlayer")
+@onready var name_holder : PanelContainer = find_child("NameHolder")
 
+var is_active : bool = false
 
 func _ready() -> void:
 	dialogue_engine = dialogue_gdscript.new()
@@ -15,6 +21,9 @@ func _ready() -> void:
 
 
 func _input(p_input_event : InputEvent) -> void:
+	if !is_active:
+		return
+	
 	if p_input_event.is_action_pressed(&"ui_accept"):
 		if not animation_player.is_playing():
 			dialogue_engine.advance()
@@ -27,20 +36,18 @@ func _input(p_input_event : InputEvent) -> void:
 
 
 func __on_dialogue_started() -> void:
-	print("Dialogue Started!")
+	show()
 
 
 func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
+	name_holder.hide()
 	# Add the text to the log:
-	var label : RichTextLabel = RichTextLabel.new()
-	label.set_use_bbcode(true)
-	label.set_fit_content(true)
 	if p_dialogue_entry.has_metadata("author"):
 		var author : String = p_dialogue_entry.get_metadata("author")
-		label.set_text("  > " + author + ": " + p_dialogue_entry.get_formatted_text())
-	else:
-		label.set_text("  > " + p_dialogue_entry.get_formatted_text())
-	add_child(label, true)
+		name_label.set_text(author)
+		name_holder.show()
+
+	dialogue_label.set_text(p_dialogue_entry.get_formatted_text())
 
 	# Setup the animation:
 	animation_player.stop(true) # internally some timers do not reset properly unless we do this
@@ -48,51 +55,19 @@ func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 		var new_animation_library : AnimationLibrary = AnimationLibrary.new()
 		animation_player.add_animation_library(&"demo", new_animation_library)
 	var animation_library : AnimationLibrary = animation_player.get_animation_library(&"demo")
-	var animation : Animation = create_visible_characters_animation_per_character(label.get_text(), 0.045, true)
-	animation_player.set_root_node(label.get_path())
+	var animation : Animation = create_visible_characters_animation_per_character(dialogue_label.get_text(), 0.045, true)
+	animation_player.set_root_node(dialogue_label.get_path())
 	animation_library.add_animation(&"dialogue", animation)
 	animation_player.play(&"demo/dialogue")
 
-	# Setup the post dialogue callback
-	if p_dialogue_entry.has_metadata(&"get_player_name"):
-		animation_player.animation_finished.connect(__on_animation_finished.bind(__get_player_name), CONNECT_ONE_SHOT)
-
 
 func __on_dialogue_finished() -> void:
-	print("Dialogue Finished! Exiting...")
-	get_tree().quit()
+	hide()
 
 
 func __on_dialogue_canceled() -> void:
 	print("Dialogue Canceled! Exiting...")
-	get_tree().quit()
-
-
-# Must return player name to update the variable within DialogueEngine
-func __get_player_name() -> void:
-	# Get player name into the current stack:
-	var line_edit : LineEdit = LineEdit.new()
-	add_child(line_edit)
-	var p_data : Array = []
-	line_edit.text_submitted.connect(func(text : String) -> void:
-		p_data.push_back(text)
-		)
-	line_edit.grab_focus()
-	line_edit.set_placeholder("Enter your name.")
-
-	# Disable input processing by this node to avoid calling DialogueEngine.advance if the user presses space or enter
-	set_process_input(false)
-
-	await line_edit.text_submitted
-	line_edit.set_editable(false)
-
-	# Allow the user to progress the dialogue
-	set_process_input(true)
-
-	# Auto-advance the dialogue so the user does not have to press space or enter again
-	@warning_ignore("unsafe_property_access")
-	dialogue_engine.player_name = p_data[0]
-	dialogue_engine.advance()
+	hide()
 
 
 func __on_animation_started(p_animation_name : StringName) -> void:

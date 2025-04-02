@@ -11,13 +11,15 @@ func _init(res : ScheduleItemResource) -> void:
 	resource = res
 	positions = resource.schedule_positions
 	custom_minimum_size = Vector2(10,90);
-	#var panel := PanelContainer.new()
+	var texture := TextureRect.new()
+	texture.texture = load("uid://iu6hql5aknwf")
+	texture.modulate = resource.color
 	button = Button.new()
 	button.text = resource.item_name
 	button.pressed.connect(selected)
 	
-	#panel.add_child(button)
-	add_child(button)
+	texture.add_child(button)
+	add_child(texture)
 
 func selected() -> void:
 	set_item.emit(self)

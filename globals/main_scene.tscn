@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://d0h5267lvtjkj"]
+[gd_scene load_steps=22 format=3 uid="uid://d0h5267lvtjkj"]
 
+[ext_resource type="PackedScene" uid="uid://dghckoj71q55x" path="res://events/prototype_event_scene.tscn" id="1_7vtr8"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
 [ext_resource type="Script" uid="uid://bxmjgbdhtdqgs" path="res://globals/state_machine.gd" id="1_qc1yn"]
 [ext_resource type="Script" uid="uid://chcgesmdjhdd7" path="res://globals/state.gd" id="2_hkxpy"]
@@ -57,6 +58,10 @@ handle_input_locally = false
 size = Vector2i(640, 480)
 render_target_update_mode = 4
 
+[node name="EventSceneHolder" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="PrototypeEventScene" parent="SubViewportContainer/SubViewport/EventSceneHolder" instance=ExtResource("1_7vtr8")]
+
 [node name="Schedule" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_hkxpy")]
 visible = false
 mouse_filter = 1
@@ -64,21 +69,22 @@ mouse_filter = 1
 [node name="MainMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_gd4ly")]
 visible = false
 
+[node name="Dialogue" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_ot8wt")]
+
 [node name="PauseMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_b1t4u")]
 visible = false
 
 [node name="LoadingScreen" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_b1t4u")]
 visible = false
 
-[node name="Dialogue" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_ot8wt")]
-visible = false
-
-[node name="EventSceneHolder" type="Node3D" parent="SubViewportContainer/SubViewport"]
-
 [node name="GameStates" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("1_qc1yn")
 CURRENT_STATE = NodePath("PlaySchedule")
 metadata/_custom_type_script = "uid://bxmjgbdhtdqgs"
+
+[node name="PlayGifting" type="Node" parent="GameStates"]
+script = ExtResource("2_hkxpy")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="PlaySchedule" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
 script = ExtResource("4_yw4hp")
