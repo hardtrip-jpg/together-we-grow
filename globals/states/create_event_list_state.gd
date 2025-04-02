@@ -23,3 +23,7 @@ func enter(_previous_state: State) -> void:
 			Global.loaded_save.current_event_list.append(x)
 			var remove_at := Global.loaded_save.available_events.find(x)
 			Global.loaded_save.available_events.remove_at(remove_at)
+
+func update(delta : float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		SignalManager.pause_menu.emit("CreateEventList")

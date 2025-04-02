@@ -106,8 +106,9 @@ metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 script = ExtResource("2_hkxpy")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="PauseMenu" type="Node" parent="GameStates"]
+[node name="PauseMenu" type="Node" parent="GameStates" node_paths=PackedStringArray("pause_menu")]
 script = ExtResource("6_c70f3")
+pause_menu = NodePath("../../SubViewportContainer/SubViewport/PauseMenu")
 
 [node name="MainMenu" type="Node" parent="GameStates"]
 script = ExtResource("7_06tgn")
