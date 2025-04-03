@@ -1,3 +1,4 @@
+@icon("uid://cvy4h4sup2211")
 extends Resource
 class_name ScheduleItemResource
 

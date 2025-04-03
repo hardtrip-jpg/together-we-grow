@@ -1,3 +1,4 @@
+@icon("uid://d0evn8dub0xke")
 extends Resource
 class_name EventResource
 

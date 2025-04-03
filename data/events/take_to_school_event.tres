@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=2 format=3 uid="uid://0w3wguhimaif"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_eax2r"]
+
+[resource]
+script = ExtResource("1_eax2r")
+required_stats = {}
+required_changes = {}
+required_scheduled = []
+scene = ""
+metadata/_custom_type_script = "uid://be1f3n5eby81"
