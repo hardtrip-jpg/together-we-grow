@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://dsx303jtx7qe7" path="res://globals/states/pause_menu_state.gd" id="6_c70f3"]
 [ext_resource type="Script" uid="uid://djcihd6844qlv" path="res://globals/states/main_menu_state.gd" id="7_06tgn"]
 [ext_resource type="PackedScene" uid="uid://bpqmavuw4i6xh" path="res://ui/dialogue.tscn" id="7_ot8wt"]
-[ext_resource type="AudioStream" uid="uid://bww8jxsimm5ds" path="res://music/bpm124/drum_loop_0.wav" id="13_rv08n"]
+[ext_resource type="AudioStream" uid="uid://u746ie5db7ne" path="res://music/bpm124/newdrumloop.mp3" id="14_7vtr8"]
 [ext_resource type="AudioStream" uid="uid://ba0ijcpbqtuer" path="res://music/bpm124/main-loop-babybells.wav" id="14_os1gl"]
 [ext_resource type="AudioStream" uid="uid://c17o5rjwx0e5q" path="res://music/bpm124/main-loop-bass-y.wav" id="15_7vtr8"]
 [ext_resource type="AudioStream" uid="uid://mb36i8135gcb" path="res://music/bpm124/main-loop-dreamy.wav" id="16_owj8a"]
@@ -23,7 +23,7 @@
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_o5g26"]
 stream_count = 6
-stream_0/stream = ExtResource("13_rv08n")
+stream_0/stream = ExtResource("14_7vtr8")
 stream_0/volume = -60.0
 stream_1/stream = ExtResource("14_os1gl")
 stream_1/volume = -60.0
@@ -70,6 +70,7 @@ mouse_filter = 1
 visible = false
 
 [node name="Dialogue" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_ot8wt")]
+visible = false
 
 [node name="PauseMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_b1t4u")]
 visible = false
@@ -79,7 +80,7 @@ visible = false
 
 [node name="GameStates" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("1_qc1yn")
-CURRENT_STATE = NodePath("PlaySchedule")
+CURRENT_STATE = NodePath("LoadNextEvent")
 metadata/_custom_type_script = "uid://bxmjgbdhtdqgs"
 
 [node name="PlayGifting" type="Node" parent="GameStates"]
@@ -117,6 +118,7 @@ script = ExtResource("7_06tgn")
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="AudioManager"]
 stream = SubResource("AudioStreamSynchronized_o5g26")
+autoplay = true
 script = ExtResource("19_os1gl")
 
 [node name="SFX" type="AudioStreamPlayer" parent="AudioManager"]

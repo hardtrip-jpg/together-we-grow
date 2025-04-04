@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScheduleItemResource" load_steps=2 format=3 uid="uid://b0r1or138a40w"]
+
+[ext_resource type="Script" uid="uid://bluwdt0ugteik" path="res://data/schedule_item_resource.gd" id="1_govmh"]
+
+[resource]
+script = ExtResource("1_govmh")
+item_name = "TV Night"
+schedule_positions = [Vector2i(0, 0), Vector2i(0, 1)]
+required_age = Vector2(1, 3)
+symbol = "uid://u3oi7k03vwvc"
+color = Color(0.453491, 0.572029, 0.682302, 1)
+metadata/_custom_type_script = "uid://bluwdt0ugteik"

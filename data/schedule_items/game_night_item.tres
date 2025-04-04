@@ -4,10 +4,9 @@
 
 [resource]
 script = ExtResource("1_kufiw")
-item_name = "BoardGameNight"
+item_name = "Game Night"
 schedule_positions = [Vector2i(0, 0), Vector2i(0, -1), Vector2i(1, 0)]
-required_age = Vector2(1, 10)
+required_age = Vector2(2, 3)
 symbol = "uid://wrfblolpn8kg"
 color = Color(0.254988, 0.539568, 1, 1)
-stat_changes = {}
 metadata/_custom_type_script = "uid://bluwdt0ugteik"

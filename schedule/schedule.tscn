@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://brh8k65ai3tmv"]
+[gd_scene load_steps=8 format=3 uid="uid://brh8k65ai3tmv"]
 
 [ext_resource type="Script" uid="uid://bmuavit5nlv3m" path="res://schedule/schedule_manager.gd" id="1_e06vy"]
 [ext_resource type="Texture2D" uid="uid://repcdojo1qy4" path="res://schedule/calendar_view_up.png" id="2_po0un"]
@@ -19,12 +19,18 @@ bg_color = Color(1, 1, 1, 0.109804)
 BoxContainer/constants/separation = 0
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/constants/outline_size = 4
-Label/font_sizes/font_size = 19
+Label/constants/outline_size = 7
+Label/font_sizes/font_size = 21
 Label/fonts/font = ExtResource("3_po0un")
 Panel/styles/panel = SubResource("StyleBoxFlat_vi6l5")
 
-[node name="Schedule" type="Control" node_paths=PackedStringArray("schedule_inventory", "schedule_holder")]
+[sub_resource type="Theme" id="Theme_po0un"]
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 7
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("3_po0un")
+
+[node name="Schedule" type="Control" node_paths=PackedStringArray("schedule_inventory", "schedule_holder", "button")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -38,6 +44,7 @@ theme = SubResource("Theme_05yhm")
 script = ExtResource("1_e06vy")
 schedule_inventory = NodePath("HBoxContainer/Inventory/ScrollContainer/VBoxContainer")
 schedule_holder = NodePath("HBoxContainer/Schedule")
+button = NodePath("Button")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -68,12 +75,28 @@ theme_override_constants/margin_bottom = 140
 layout_mode = 2
 
 [node name="Inventory" type="MarginContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(111, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_po0un")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Inventory"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Inventory/ScrollContainer"]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -59.0
+offset_right = -45.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ready"

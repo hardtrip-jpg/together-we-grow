@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScheduleItemResource" load_steps=2 format=3 uid="uid://c0ba66sobm11v"]
+
+[ext_resource type="Script" uid="uid://bluwdt0ugteik" path="res://data/schedule_item_resource.gd" id="1_a35n8"]
+
+[resource]
+script = ExtResource("1_a35n8")
+item_name = "Visit Parents"
+schedule_positions = [Vector2i(0, 0), Vector2i(-1, 1), Vector2i(1, 1)]
+required_age = Vector2(1, 3)
+symbol = "uid://dp8of3g1q2mlu"
+color = Color(0.627497, 0.40527, 0.990833, 1)
+metadata/_custom_type_script = "uid://bluwdt0ugteik"

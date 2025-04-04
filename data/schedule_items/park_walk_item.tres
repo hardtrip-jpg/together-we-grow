@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScheduleItemResource" load_steps=2 format=3 uid="uid://vpe4rendpg5l"]
+
+[ext_resource type="Script" uid="uid://bluwdt0ugteik" path="res://data/schedule_item_resource.gd" id="1_itf07"]
+
+[resource]
+script = ExtResource("1_itf07")
+item_name = "Park Walk"
+schedule_positions = [Vector2i(0, 0), Vector2i(-1, 0), Vector2i(1, 0)]
+required_age = Vector2(1, 3)
+symbol = "uid://flarh4sbveoi"
+color = Color(0.215346, 0.586188, 0.257829, 1)
+metadata/_custom_type_script = "uid://bluwdt0ugteik"

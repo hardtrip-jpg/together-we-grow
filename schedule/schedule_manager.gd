@@ -3,6 +3,7 @@ class_name ScheduleManager
 
 @export var schedule_inventory : VBoxContainer
 @export var schedule_holder : MarginContainer
+@export var button : Button
 
 var cur_pos : Vector2
 var margin_container : MarginContainer
@@ -19,6 +20,7 @@ signal schedule_set
 
 func _ready() -> void:
 	Console.add_command("sche", command_schedule, ["Days", "Max", "Age", "Amount"], 4)
+	button.pressed.connect(func connecting() -> void: schedule_set.emit())
 
 func command_schedule(days: String, max_day_in_week : String, age: String, amount: String) -> void:
 	init_schedule(int(days), int(max_day_in_week))

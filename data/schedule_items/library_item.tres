@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScheduleItemResource" load_steps=2 format=3 uid="uid://h6ky2ufy3nhw"]
+
+[ext_resource type="Script" uid="uid://bluwdt0ugteik" path="res://data/schedule_item_resource.gd" id="1_gd8o2"]
+
+[resource]
+script = ExtResource("1_gd8o2")
+item_name = "Visit Library"
+schedule_positions = [Vector2i(0, 0), Vector2i(0, -1), Vector2i(0, 1)]
+required_age = Vector2(1, 3)
+symbol = "uid://dchsyorscsehq"
+color = Color(0.304696, 0.819514, 0.560709, 1)
+metadata/_custom_type_script = "uid://bluwdt0ugteik"

@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func enter(_previous_state : State) -> void:
 	#loading_screen.show()
+	transition.emit("PlaySchedule")
 	pass
 
 func update(_delta: float) -> void:

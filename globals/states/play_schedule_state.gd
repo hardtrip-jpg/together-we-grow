@@ -8,7 +8,8 @@ func enter(_previous_state : State) -> void:
 		return
 	schedule.show()
 	schedule.init_schedule(16, 5)
-	schedule.init_items(2,1)
+	schedule.init_items(2,10)
+	SignalManager.set_audio.emit(1, false)
 
 func update(_delta : float) -> void:
 	done()

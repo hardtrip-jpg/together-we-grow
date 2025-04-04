@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ScheduleItemResource" load_steps=2 format=3 uid="uid://bc4a0occiyeno"]
+
+[ext_resource type="Script" uid="uid://bluwdt0ugteik" path="res://data/schedule_item_resource.gd" id="1_g86es"]
+
+[resource]
+script = ExtResource("1_g86es")
+item_name = "Product in Testing"
+schedule_positions = [Vector2i(0, 0), Vector2i(0, -1), Vector2i(0, 1)]
+required_age = Vector2(1, 3)
+symbol = "uid://wrfblolpn8kg"
+color = Color(0.521569, 0.501961, 0.478431, 1)
+metadata/_custom_type_script = "uid://bluwdt0ugteik"
