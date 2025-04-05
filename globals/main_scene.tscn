@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0h5267lvtjkj"]
+[gd_scene load_steps=25 format=3 uid="uid://d0h5267lvtjkj"]
 
 [ext_resource type="PackedScene" uid="uid://dghckoj71q55x" path="res://events/prototype_event_scene.tscn" id="1_7vtr8"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://do65o2xsnrgm7" path="res://globals/states/play_schedule_state.gd" id="4_yw4hp"]
 [ext_resource type="PackedScene" uid="uid://nte5pdx11vy4" path="res://ui/pause_menu.tscn" id="5_b1t4u"]
 [ext_resource type="Script" uid="uid://cs3r32eldjjv0" path="res://globals/states/create_event_list_state.gd" id="5_qp52p"]
-[ext_resource type="PackedScene" uid="uid://cu1hdohyv52yr" path="res://ui/loading_screen.tscn" id="6_b1t4u"]
 [ext_resource type="Script" uid="uid://dsx303jtx7qe7" path="res://globals/states/pause_menu_state.gd" id="6_c70f3"]
 [ext_resource type="Script" uid="uid://djcihd6844qlv" path="res://globals/states/main_menu_state.gd" id="7_06tgn"]
 [ext_resource type="PackedScene" uid="uid://bpqmavuw4i6xh" path="res://ui/dialogue.tscn" id="7_ot8wt"]
@@ -20,6 +19,60 @@
 [ext_resource type="AudioStream" uid="uid://dr7yov1jowlgo" path="res://music/bpm124/main-loop-playful.wav" id="17_mm1kp"]
 [ext_resource type="AudioStream" uid="uid://b01cn4adu3hu2" path="res://music/bpm124/main-loop_subtle.wav" id="18_0w7fr"]
 [ext_resource type="Script" uid="uid://d1vmpmq5dlpab" path="res://music/scripts/bg_music_manager.gd" id="19_os1gl"]
+
+[sub_resource type="Animation" id="Animation_os1gl"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../SubViewportContainer/SubViewport/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7vtr8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../SubViewportContainer/SubViewport/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_owj8a"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../SubViewportContainer/SubViewport/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vtr8"]
+_data = {
+&"RESET": SubResource("Animation_7vtr8"),
+&"fade_in": SubResource("Animation_os1gl"),
+&"fade_out": SubResource("Animation_owj8a")
+}
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_o5g26"]
 stream_count = 6
@@ -75,12 +128,18 @@ visible = false
 [node name="PauseMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_b1t4u")]
 visible = false
 
-[node name="LoadingScreen" parent="SubViewportContainer/SubViewport" instance=ExtResource("6_b1t4u")]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="GameStates" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("1_qc1yn")
-CURRENT_STATE = NodePath("LoadNextEvent")
+CURRENT_STATE = NodePath("PlaySchedule")
 metadata/_custom_type_script = "uid://bxmjgbdhtdqgs"
 
 [node name="PlayGifting" type="Node" parent="GameStates"]
@@ -97,11 +156,18 @@ script = ExtResource("5_qp52p")
 schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="LoadNextEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("loading_screen", "event_holder")]
+[node name="LoadNextEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("animation", "event_holder", "dialogue_screen")]
 script = ExtResource("3_qp52p")
-loading_screen = NodePath("../../SubViewportContainer/SubViewport/LoadingScreen")
+animation = NodePath("LoadingAnimation")
 event_holder = NodePath("../../SubViewportContainer/SubViewport/EventSceneHolder")
+dialogue_screen = NodePath("../../SubViewportContainer/SubViewport/Dialogue")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="LoadingAnimation" type="AnimationPlayer" parent="GameStates/LoadNextEvent"]
+libraries = {
+&"": SubResource("AnimationLibrary_7vtr8")
+}
+autoplay = "fade_out"
 
 [node name="PlayEvent" type="Node" parent="GameStates"]
 script = ExtResource("2_hkxpy")

@@ -7,6 +7,6 @@ script = ExtResource("1_dkb4g")
 item_name = "Weeklong Crunch"
 schedule_positions = [Vector2i(0, 0), Vector2i(-1, 0), Vector2i(1, 0), Vector2i(2, 0)]
 required_age = Vector2(1, 3)
-symbol = "uid://wrfblolpn8kg"
+symbol = "uid://bj7f3ngw863bg"
 color = Color(0.521247, 0.502654, 0.479067, 1)
 metadata/_custom_type_script = "uid://bluwdt0ugteik"

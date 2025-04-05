@@ -7,6 +7,6 @@ script = ExtResource("1_fnujo")
 item_name = "Someone Spilt"
 schedule_positions = [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(-1, 0)]
 required_age = Vector2(1, 3)
-symbol = "uid://wrfblolpn8kg"
+symbol = "uid://dc63attxydtjf"
 color = Color(0.521569, 0.501961, 0.478431, 1)
 metadata/_custom_type_script = "uid://bluwdt0ugteik"

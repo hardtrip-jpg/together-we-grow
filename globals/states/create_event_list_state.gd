@@ -4,7 +4,7 @@ class_name CreateEventList
 @export var schedule : ScheduleManager
 
 func enter(_previous_state: State) -> void:
-	schedule.hide()
+
 	var events : Array = []
 	
 	Global.loaded_save.reset_currents()
@@ -26,6 +26,8 @@ func enter(_previous_state: State) -> void:
 	
 	SignalManager.set_audio.emit(2, true)
 
+
 func update(delta : float) -> void:
+	transition.emit("LoadNextEvent")
 	if Input.is_action_just_pressed("ui_cancel"):
 		SignalManager.pause_menu.emit("CreateEventList")

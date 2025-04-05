@@ -6,9 +6,10 @@ var desired_song : int = 1
 
 func _ready() -> void:
 	SignalManager.set_audio.connect(set_audio)
-	set_audio(3, false)
+	#set_audio(3, false)
 
 func set_audio(song : int, drums : bool) -> void:
+	print("Change song to ", song)
 	if cur_song != desired_song:
 		stream.set_sync_stream_volume(desired_song, -60)
 	

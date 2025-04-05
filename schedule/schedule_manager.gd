@@ -29,7 +29,7 @@ func command_schedule(days: String, max_day_in_week : String, age: String, amoun
 func _input(event: InputEvent) -> void:
 	if visible == false: return
 	
-	if event.is_action_pressed("ui_accept") && selected:
+	if event.is_action_pressed("mouse_left") && selected:
 		place_active_item()
 
 
