@@ -1,3 +1,4 @@
+@icon("uid://btfohr4avt4e7")
 extends Resource
 class_name CutsceneResource
 

@@ -67,8 +67,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_vi6l5")
-theme_override_constants/margin_left = 79
-theme_override_constants/margin_top = 137
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 126
 theme_override_constants/margin_bottom = 140
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/Schedule"]
@@ -82,6 +82,7 @@ theme = SubResource("Theme_po0un")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Inventory"]
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Inventory/ScrollContainer"]
 layout_mode = 2

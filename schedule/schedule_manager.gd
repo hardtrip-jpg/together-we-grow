@@ -36,7 +36,13 @@ func _input(event: InputEvent) -> void:
 func init_schedule(days : int, max_day_in_week : int) -> void:
 	print('Days: ', days)
 	if margin_container: margin_container.queue_free()
+	margin_container = MarginContainer.new()
+	
+	all_slots = []
 	cur_map = []
+	can_activate = []
+	placed_items = {}
+	
 	var counter := 1
 	var days_left := days
 	var weeks := int(ceil(float(days) / float(max_day_in_week)))
@@ -64,11 +70,15 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 			all_slots.append(new_day)
 			new_week.add_child(new_day)
 		week_holder.add_child(new_week)
-		
-	schedule_holder.add_child(week_holder)
+	
+	margin_container.add_child(week_holder)
+	schedule_holder.add_child(margin_container)
 
 func init_items(age : int, amount : int) -> void:
 	randomize()
+	for x in schedule_inventory.get_children():
+		x.queue_free()
+	
 	var available_items := []
 	for x in Global.all_schedule_items:
 		if x.match_age(age):

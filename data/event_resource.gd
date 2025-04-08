@@ -1,17 +1,17 @@
-@icon("uid://d0evn8dub0xke")
+@icon("uid://bdiofq7khidqx")
 extends Resource
 class_name EventResource
 
 @export var required_stats : Dictionary
 @export var required_changes : Dictionary
 @export var required_scheduled : Array
-@export var scene : String
+@export var cutscene : CutsceneResource
 
-func _init(p_stats := {}, p_changes := {}, p_sched := [], p_scene := "") -> void:
+func _init(p_stats := {}, p_changes := {}, p_sched := [], p_scene := CutsceneResource.new()) -> void:
 	required_stats = p_stats
 	required_changes = p_changes
 	required_scheduled = p_sched
-	scene = p_scene
+	cutscene = p_scene
 
 func check(p_check : CheckResource) -> bool:
 	var stat_bool := false

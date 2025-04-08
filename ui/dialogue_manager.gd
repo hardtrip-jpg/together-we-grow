@@ -4,21 +4,25 @@ class_name DialogueManager
 @export var name_label : RichTextLabel
 @export var dialogue_label : RichTextLabel
 
-@export var dialogue_gdscript : GDScript = null
+#@export var dialogue_gdscript : GDScript = null
 var dialogue_engine : DialogueEngine = null
 
 @onready var animation_player : AnimationPlayer = find_child("LogAnimationPlayer")
 @onready var name_holder : PanelContainer = find_child("NameHolder")
 
-var is_active : bool = false
+var is_active : bool = true
+signal finished_dialogue
 
 func _ready() -> void:
-	dialogue_engine = dialogue_gdscript.new()
+	pass
+
+func active(dialogue : GDScript) -> void:
+	dialogue_engine = dialogue.new()
 	dialogue_engine.dialogue_started.connect(__on_dialogue_started)
 	dialogue_engine.dialogue_continued.connect(__on_dialogue_continued)
 	dialogue_engine.dialogue_finished.connect(__on_dialogue_finished)
 	dialogue_engine.dialogue_canceled.connect(__on_dialogue_canceled)
-
+	
 
 func _input(p_input_event : InputEvent) -> void:
 	if !is_active:
@@ -62,6 +66,8 @@ func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 
 
 func __on_dialogue_finished() -> void:
+	is_active = false
+	finished_dialogue.emit()
 	hide()
 
 

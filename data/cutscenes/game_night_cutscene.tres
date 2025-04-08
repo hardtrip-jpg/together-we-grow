@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CutsceneResource" load_steps=3 format=3 uid="uid://bbt6u7uwdgkgu"]
+
+[ext_resource type="Script" uid="uid://d3b57kldtvopb" path="res://data/dialogue/game_night_dialogue.gd" id="1_bw3kb"]
+[ext_resource type="Script" uid="uid://blx4i1kbo1ji6" path="res://data/cutscene_resource.gd" id="1_g63o1"]
+
+[resource]
+script = ExtResource("1_g63o1")
+dialogue = ExtResource("1_bw3kb")
+images = Dictionary[String, String]({})
+positions = Dictionary[String, String]({})
+metadata/_custom_type_script = "uid://blx4i1kbo1ji6"

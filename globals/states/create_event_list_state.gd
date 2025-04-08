@@ -25,6 +25,7 @@ func enter(_previous_state: State) -> void:
 			Global.loaded_save.available_events.remove_at(remove_at)
 	
 	SignalManager.set_audio.emit(2, true)
+	print(Global.loaded_save.available_events)
 
 
 func update(delta : float) -> void:
