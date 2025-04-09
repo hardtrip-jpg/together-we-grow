@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ScheduleItemMoney" load_steps=2 format=3 uid="uid://d1bm4ukkdwdyh"]
+
+[ext_resource type="Script" uid="uid://cyn620enqef3x" path="res://data/schedule_item_money.gd" id="1_dvx7q"]
+
+[resource]
+script = ExtResource("1_dvx7q")
+money = 1
+item_name = "Museum - 1$"
+schedule_positions = [Vector2i(0, 0), Vector2i(1, 0)]
+required_age = Vector2(1, 3)
+symbol = "uid://rrojyhmf0i51"
+color = Color(0.573884, 0.336189, 0.758551, 1)
+metadata/_custom_type_script = "uid://cyn620enqef3x"

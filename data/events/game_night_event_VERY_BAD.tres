@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://ctqr2oxdy84x0"]
 
-[ext_resource type="Resource" uid="uid://dvr1jdqmxgbvj" path="res://data/cutscenes/game_night_cutscene_VERY_BAD.tres" id="1_meadg"]
+[ext_resource type="Script" uid="uid://c7nsqcgb3r2xi" path="res://data/dialogue/game_night_dialogue_VERY_BAD.gd" id="1_meadg"]
 [ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="2_2h7jt"]
 
 [resource]

@@ -18,6 +18,8 @@ func enter(_previous_state : State) -> void:
 	var current_hightest_val : int
 	var current_high : String
 	for x : String in Global.loaded_save.current_stats:
+		if x == "relationship" or x == "money":
+			continue
 		if Global.loaded_save.current_stats[x] > current_hightest_val:
 			current_hightest_val = Global.loaded_save.current_stats[x]
 			current_high = x

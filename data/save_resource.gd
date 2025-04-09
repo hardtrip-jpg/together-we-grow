@@ -10,7 +10,7 @@ var current_event_list : Array[EventResource]
 var current_event_index : int = 0
 
 var current_stats : Dictionary = {
-	"relationship": 5,
+	"relationship": 4,
 	"athletic": 0,
 	"nerd": 0,
 	"rebel": 0,

@@ -1,8 +1,7 @@
 extends DialogueEngine
 
 func _setup() -> void:
-	add_text_entry("Welcome to [rainbow freq=1.0 sat=0.4 val=0.8]Together We Grow[/rainbow]! 
-	Click [shake rate=20.0 level=5 connected=1]Left Mouse[/shake] to advance").set_metadata_data({
+	add_text_entry("Welcome to [rainbow freq=1.0 sat=0.4 val=0.8]Together We Grow[/rainbow]! Click [shake rate=20.0 level=5 connected=1]Left Mouse[/shake] to advance").set_metadata_data({
 		"background": "uid://dx1hiuvhigfmx",
 		"emotion": "neutral"
 	})

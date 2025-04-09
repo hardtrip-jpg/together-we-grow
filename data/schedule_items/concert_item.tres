@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ScheduleItemMoney" load_steps=2 format=3 uid="uid://bqv0u0eqo1blf"]
+
+[ext_resource type="Script" uid="uid://cyn620enqef3x" path="res://data/schedule_item_money.gd" id="1_jckf5"]
+
+[resource]
+script = ExtResource("1_jckf5")
+money = -2
+item_name = "Concert - 2$"
+schedule_positions = [Vector2i(0, 0), Vector2i(1, 0)]
+required_age = Vector2(2, 3)
+symbol = "uid://rrojyhmf0i51"
+color = Color(0.412163, 0.619088, 0.321996, 1)
+metadata/_custom_type_script = "uid://cyn620enqef3x"

@@ -16,7 +16,7 @@ func enter(_previous_state: State) -> void:
 				events.append(x.event.item_name)
 			print(x.global_position)
 	
-	var check := CheckResource.new({"age": 2, "relationship": 4},{},events)
+	var check := CheckResource.new(Global.loaded_save.current_stats,{},events)
 	var available_events := Global.loaded_save.available_events
 	
 	for x in available_events:
@@ -29,7 +29,6 @@ func enter(_previous_state: State) -> void:
 	SignalManager.set_audio.emit(2, true)
 	
 	await animation.animation_finished
-	print("checkingkasd")
 	schedule.hide()
 
 

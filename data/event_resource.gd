@@ -5,9 +5,9 @@ class_name EventResource
 @export var required_stats : Dictionary[String, Array]
 @export var required_changes : Dictionary[String, int]
 @export var required_scheduled : Array[String]
-@export var cutscene : CutsceneResource
+@export var cutscene : GDScript
 
-func _init(p_stats : Dictionary[String, Array] = {"":[""]}, p_changes : Dictionary[String, int] = {"":0}, p_sched : Array[String] = [""], p_scene := CutsceneResource.new()) -> void:
+func _init(p_stats : Dictionary[String, Array] = {"":[""]}, p_changes : Dictionary[String, int] = {"":0}, p_sched : Array[String] = [""], p_scene := GDScript.new()) -> void:
 	required_stats = p_stats
 	required_changes = p_changes
 	required_scheduled = p_sched

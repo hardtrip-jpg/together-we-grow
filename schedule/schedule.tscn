@@ -119,4 +119,5 @@ offset_bottom = 26.0
 grow_horizontal = 2
 theme = ExtResource("4_fyk7c")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "money 5$"

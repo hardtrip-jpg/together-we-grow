@@ -14,15 +14,15 @@ var current_emoting : String
 
 var sprites : Dictionary = {
 	"baby":{"sad": "uid://cx6di2skjmvq2", "wail": "uid://c8jnmx6ulwyg3", "happy":"uid://dqcxje5ysduee", "neutral": "uid://dcq1mygndey6u"},
-	"athletic":{"main": "uid://bvgw2s6feo20p", "happy":"", "sad":"", "neutral":""},
-	"nerd":{"main": "uid://bvvv4wfdgmwpc", "happy":"", "sad":"", "neutral":""},
-	"rebel":{"rebel": "uid://xlvx5gm05yme", "happy":"", "sad":"", "neutral":""},
-	"loser":{"main": "uid://c0ww5t4amglv8", "happy":"", "sad":"", "neutral":""},
-	"basic_teen":{"main":"uid://d3jb4wqkghmr3", "neutral":""},
-	"nerd_teen":{"main":"uid://ctm2mr6mvvkrs", "neutral":""},
-	"loser_teen":{"main":"uid://ct1b3chjvk0th", "neutral":""},
-	"hacker_teen":{"main":"uid://r7luw2bosspo", "neutral":""},
-	"gang_teen":{"main":"uid://cf5vt70l4ln37", "neutral":""}
+	"athletic":{"main": "uid://bvgw2s6feo20p", "happy":"uid://i01dlt4swgqo", "sad":"uid://doah40yu2bpv5", "neutral":"uid://dcvx4utbedvij"},
+	"nerd":{"main": "uid://bvvv4wfdgmwpc", "happy":"uid://b4ud1n5y2n5p0", "sad":"uid://dqwboy7v1x3il", "neutral":"uid://ou1n4qsd8kjw"},
+	"rebel":{"rebel": "uid://xlvx5gm05yme", "happy":"uid://yr5mva7uovdn", "sad":"uid://c5ws04fsbubo1", "neutral":"uid://bu84rwxil12lj"},
+	"loser":{"main": "uid://c0ww5t4amglv8", "happy":"uid://c0keiyvfrhujh", "sad":"uid://dngftoxdc3nl", "neutral":"uid://eqvlup28vwq4"},
+	"basic_teen":{"main":"uid://d3jb4wqkghmr3", "neutral":"uid://csxj4llbsy4iq"},
+	"nerd_teen":{"main":"uid://ctm2mr6mvvkrs", "neutral":"uid://kxiv2v0fknk0"},
+	"loser_teen":{"main":"uid://ct1b3chjvk0th", "neutral":"uid://bfaf0hc6npip0"},
+	"hacker_teen":{"main":"uid://r7luw2bosspo", "neutral":"uid://bqxqqc32prlxh"},
+	"gang_teen":{"main":"uid://cf5vt70l4ln37", "neutral":"uid://hcqeqbkx5od4"}
 }
 
 
@@ -84,11 +84,15 @@ func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 			background.texture = load(current_bg)
 	if current_data.has("emotion"):
 		var emotion : String = current_data["emotion"]
-		if sprites[Global.loaded_save.current_sprite][emotion]:
+		if sprites[Global.loaded_save.current_sprite].get(emotion):
 			if sprites[Global.loaded_save.current_sprite][emotion] != current_emoting:
 				current_emoting = sprites[Global.loaded_save.current_sprite][emotion]
 				character_face.texture = load(current_emoting)
-
+		elif sprites[Global.loaded_save.current_sprite].get("neutral"):
+			current_emoting = sprites[Global.loaded_save.current_sprite]["neutral"]
+			character_face.texture = load(current_emoting)
+	if current_data.has("music"):
+		SignalManager.set_audio.emit(current_data["music"][0],current_data["music"][1])
 
 	dialogue_label.set_text(p_dialogue_entry.get_formatted_text())
 

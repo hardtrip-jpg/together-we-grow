@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d0h5267lvtjkj"]
+[gd_scene load_steps=35 format=3 uid="uid://d0h5267lvtjkj"]
 
 [ext_resource type="Theme" uid="uid://kejhe6c2n46k" path="res://globals/main_theme.tres" id="1_0w7fr"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dr7yov1jowlgo" path="res://music/bpm124/main-loop-playful.wav" id="17_mm1kp"]
 [ext_resource type="AudioStream" uid="uid://b01cn4adu3hu2" path="res://music/bpm124/main-loop_subtle.wav" id="18_0w7fr"]
 [ext_resource type="Script" uid="uid://d1vmpmq5dlpab" path="res://music/scripts/bg_music_manager.gd" id="19_os1gl"]
+[ext_resource type="Script" uid="uid://chcgesmdjhdd7" path="res://globals/state.gd" id="21_ey51l"]
 
 [sub_resource type="Animation" id="Animation_7vtr8"]
 length = 0.001
@@ -327,6 +328,10 @@ menu = NodePath("../../MainMenu")
 play = NodePath("../../MainMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/PlayButton")
 quit = NodePath("../../MainMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton")
 animation = NodePath("../StartScene/LoadingAnimation")
+
+[node name="EndGame" type="Node" parent="GameStates"]
+script = ExtResource("21_ey51l")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="AudioManager" type="Node" parent="."]
 

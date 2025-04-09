@@ -9,7 +9,7 @@ func enter(_previous_state : State) -> void:
 		return
 	schedule.show()
 	schedule.init_schedule(16, 5)
-	schedule.init_items(Global.loaded_save.current_age,10)
+	schedule.init_items(Global.loaded_save.current_age,13)
 
 
 func update(_delta : float) -> void:

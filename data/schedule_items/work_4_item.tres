@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4i3qf")
-money = 3
+money = 2
 item_name = "Work - Product in Testing"
 schedule_positions = [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, -1)]
 required_age = Vector2(1, 3)
