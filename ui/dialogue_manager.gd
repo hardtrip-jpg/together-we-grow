@@ -4,13 +4,21 @@ class_name DialogueManager
 @export var name_label : RichTextLabel
 @export var dialogue_label : RichTextLabel
 
+@export var background : TextureRect
+@export var character_bg : TextureRect
+@export var character_face : TextureRect
+
+var current_bg : String
+var current_emoting : String
+
+
 #@export var dialogue_gdscript : GDScript = null
 var dialogue_engine : DialogueEngine = null
 
 @onready var animation_player : AnimationPlayer = find_child("LogAnimationPlayer")
 @onready var name_holder : PanelContainer = find_child("NameHolder")
 
-var is_active : bool = true
+var is_active : bool = false
 signal finished_dialogue
 
 func _ready() -> void:
@@ -28,7 +36,7 @@ func _input(p_input_event : InputEvent) -> void:
 	if !is_active:
 		return
 	
-	if p_input_event.is_action_pressed(&"ui_accept"):
+	if p_input_event.is_action_pressed(&"mouse_left") && is_active:
 		if not animation_player.is_playing():
 			dialogue_engine.advance()
 		else:
@@ -46,10 +54,21 @@ func __on_dialogue_started() -> void:
 func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 	name_holder.hide()
 	# Add the text to the log:
-	if p_dialogue_entry.has_metadata("author"):
+	var current_data := p_dialogue_entry.get_metadata_data()
+	
+	if current_data.has("author"):
 		var author : String = p_dialogue_entry.get_metadata("author")
 		name_label.set_text(author)
 		name_holder.show()
+	if current_data.has("background"):
+		if current_data["background"] != current_bg:
+			current_bg = current_data["background"]
+			background.texture = load(current_bg)
+	if current_data.has("emotion"):
+		if current_data["emotion"] != current_emoting:
+			current_emoting = current_data["emotion"]
+			character_face.texture = load(current_emoting)
+
 
 	dialogue_label.set_text(p_dialogue_entry.get_formatted_text())
 
@@ -68,7 +87,7 @@ func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 func __on_dialogue_finished() -> void:
 	is_active = false
 	finished_dialogue.emit()
-	hide()
+	#hide()
 
 
 func __on_dialogue_canceled() -> void:

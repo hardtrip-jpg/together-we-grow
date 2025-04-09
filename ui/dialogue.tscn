@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5vt26h43wlwd" path="res://ui/dialogue_manager.gd" id="1_fm7tp"]
 [ext_resource type="FontFile" uid="uid://b3vvh6i8eu6se" path="res://ui/assets/Not Jam Mono Casual 10.ttf" id="1_xl33q"]
-[ext_resource type="Script" uid="uid://cp4jiojt8x6fu" path="res://addons/rubonnek.dialogue_engine/demos/1. simple dialogue/simple_dialogue.gd" id="3_xyniw"]
+[ext_resource type="Texture2D" uid="uid://dx1hiuvhigfmx" path="res://events/assets/baby_room.png" id="3_xyniw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyniw"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 0.733333)
@@ -24,7 +24,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_xyniw")
 RichTextLabel/colors/font_shadow_color = Color(0.109804, 0.109804, 0.109804, 0.572549)
 RichTextLabel/fonts/mono_font = ExtResource("1_xl33q")
 
-[node name="Dialogue" type="Control" node_paths=PackedStringArray("name_label", "dialogue_label")]
+[node name="Dialogue" type="Control" node_paths=PackedStringArray("name_label", "dialogue_label", "background", "character_bg", "character_face")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -36,7 +36,46 @@ theme = SubResource("Theme_xyniw")
 script = ExtResource("1_fm7tp")
 name_label = NodePath("MarginContainer/VBoxContainer/NameHolder/MarginContainer2/NameLabel")
 dialogue_label = NodePath("MarginContainer/VBoxContainer/PanelContainer2/MarginContainer2/DialogueLabel")
-dialogue_gdscript = ExtResource("3_xyniw")
+background = NodePath("Background")
+character_bg = NodePath("CharacterSprite")
+character_face = NodePath("CharacterFace")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+texture = ExtResource("3_xyniw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="CharacterSprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CharacterFace" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

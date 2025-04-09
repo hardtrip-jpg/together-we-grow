@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brh8k65ai3tmv"]
+[gd_scene load_steps=9 format=3 uid="uid://brh8k65ai3tmv"]
 
 [ext_resource type="Script" uid="uid://bmuavit5nlv3m" path="res://schedule/schedule_manager.gd" id="1_e06vy"]
 [ext_resource type="Texture2D" uid="uid://repcdojo1qy4" path="res://schedule/calendar_view_up.png" id="2_po0un"]
 [ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="3_po0un"]
+[ext_resource type="Theme" uid="uid://kejhe6c2n46k" path="res://globals/main_theme.tres" id="4_fyk7c"]
 
 [sub_resource type="Theme" id="Theme_05yhm"]
 BoxContainer/constants/separation = 8
@@ -88,6 +89,7 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -100,4 +102,5 @@ offset_right = -45.0
 offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Ready"
+theme = ExtResource("4_fyk7c")
+text = "ready"

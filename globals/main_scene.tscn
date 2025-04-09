@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://d0h5267lvtjkj"]
+[gd_scene load_steps=30 format=3 uid="uid://d0h5267lvtjkj"]
 
-[ext_resource type="PackedScene" uid="uid://dghckoj71q55x" path="res://events/prototype_event_scene.tscn" id="1_7vtr8"]
+[ext_resource type="Theme" uid="uid://kejhe6c2n46k" path="res://globals/main_theme.tres" id="1_0w7fr"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
 [ext_resource type="Script" uid="uid://bxmjgbdhtdqgs" path="res://globals/state_machine.gd" id="1_qc1yn"]
+[ext_resource type="Script" uid="uid://6l88orexr1xl" path="res://globals/enter_name_scene.gd" id="2_0w7fr"]
 [ext_resource type="Script" uid="uid://chcgesmdjhdd7" path="res://globals/state.gd" id="2_hkxpy"]
 [ext_resource type="Script" uid="uid://b6rmslkoeb5qx" path="res://globals/states/loading_state.gd" id="3_qp52p"]
 [ext_resource type="PackedScene" uid="uid://drjqff5dh6b8p" path="res://ui/main_menu.tscn" id="4_gd4ly"]
@@ -11,7 +12,9 @@
 [ext_resource type="Script" uid="uid://cs3r32eldjjv0" path="res://globals/states/create_event_list_state.gd" id="5_qp52p"]
 [ext_resource type="Script" uid="uid://dsx303jtx7qe7" path="res://globals/states/pause_menu_state.gd" id="6_c70f3"]
 [ext_resource type="Script" uid="uid://djcihd6844qlv" path="res://globals/states/main_menu_state.gd" id="7_06tgn"]
+[ext_resource type="Script" uid="uid://bffl83jp3qahe" path="res://data/dialogue/first_scene.gd" id="7_mm1kp"]
 [ext_resource type="PackedScene" uid="uid://bpqmavuw4i6xh" path="res://ui/dialogue.tscn" id="7_ot8wt"]
+[ext_resource type="Script" uid="uid://bss4ibch0mn2j" path="res://globals/states/start_scene_state.gd" id="7_owj8a"]
 [ext_resource type="Script" uid="uid://nso5nt18njct" path="res://globals/states/play_event_state.gd" id="11_7vtr8"]
 [ext_resource type="AudioStream" uid="uid://u746ie5db7ne" path="res://music/bpm124/newdrumloop.mp3" id="14_7vtr8"]
 [ext_resource type="AudioStream" uid="uid://ba0ijcpbqtuer" path="res://music/bpm124/main-loop-babybells.wav" id="14_os1gl"]
@@ -26,7 +29,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../SubViewportContainer/SubViewport/ColorRect:color")
+tracks/0/path = NodePath("../../ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,6 +38,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Press to Continue:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_os1gl"]
 resource_name = "fade_in"
@@ -42,7 +57,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../SubViewportContainer/SubViewport/ColorRect:color")
+tracks/0/path = NodePath("../../ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -58,7 +73,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../SubViewportContainer/SubViewport/ColorRect:color")
+tracks/0/path = NodePath("../../ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,17 +83,34 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_0w7fr"]
+resource_name = "fade_in_text"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Press to Continue:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vtr8"]
 _data = {
 &"RESET": SubResource("Animation_7vtr8"),
 &"fade_in": SubResource("Animation_os1gl"),
+&"fade_in_text": SubResource("Animation_0w7fr"),
 &"fade_out": SubResource("Animation_owj8a")
 }
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_o5g26"]
-stream_count = 6
+stream_count = 7
 stream_0/stream = ExtResource("14_7vtr8")
-stream_0/volume = -60.0
+stream_0/volume = 0.0
 stream_1/stream = ExtResource("14_os1gl")
 stream_1/volume = -60.0
 stream_2/stream = ExtResource("15_7vtr8")
@@ -89,6 +121,7 @@ stream_4/stream = ExtResource("17_mm1kp")
 stream_4/volume = -60.0
 stream_5/stream = ExtResource("18_0w7fr")
 stream_5/volume = -60.0
+stream_6/volume = 0.0
 
 [node name="MainScene" type="Control"]
 texture_filter = 1
@@ -99,7 +132,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="EnterName" type="Control" parent="." node_paths=PackedStringArray("text_edit", "button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0w7fr")
+script = ExtResource("2_0w7fr")
+text_edit = NodePath("CenterContainer/VBoxContainer/TextEdit")
+button = NodePath("CenterContainer/VBoxContainer/Button")
+
+[node name="ColorRect" type="ColorRect" parent="EnterName"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="EnterName"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,29 +161,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(640, 480)
-render_target_update_mode = 4
+[node name="VBoxContainer" type="VBoxContainer" parent="EnterName/CenterContainer"]
+layout_mode = 2
 
-[node name="EventSceneHolder" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="TextEdit" type="TextEdit" parent="EnterName/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 30)
+layout_mode = 2
+placeholder_text = "Enter your childs name"
+scroll_fit_content_height = true
+scroll_fit_content_width = true
 
-[node name="PrototypeEventScene" parent="SubViewportContainer/SubViewport/EventSceneHolder" instance=ExtResource("1_7vtr8")]
+[node name="Button" type="Button" parent="EnterName/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Ready"
 
-[node name="Schedule" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_hkxpy")]
+[node name="Dialogue" parent="." instance=ExtResource("7_ot8wt")]
+process_mode = 1
 visible = false
-mouse_filter = 1
+layout_mode = 1
+theme = ExtResource("1_0w7fr")
 
-[node name="MainMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_gd4ly")]
+[node name="Schedule" parent="." instance=ExtResource("1_hkxpy")]
 visible = false
+layout_mode = 1
 
-[node name="Dialogue" parent="SubViewportContainer/SubViewport" instance=ExtResource("7_ot8wt")]
+[node name="MainMenu" parent="." instance=ExtResource("4_gd4ly")]
 visible = false
+layout_mode = 1
+theme = ExtResource("1_0w7fr")
 
-[node name="PauseMenu" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_b1t4u")]
+[node name="SubViewport" parent="MainMenu/SubViewportContainer2" index="0"]
+render_target_update_mode = 0
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_b1t4u")]
 visible = false
+layout_mode = 1
+theme = ExtResource("1_0w7fr")
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -138,10 +209,40 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Press to Continue" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_0w7fr")
+text = "Click to continue..."
+
 [node name="GameStates" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("1_qc1yn")
-CURRENT_STATE = NodePath("PlaySchedule")
+CURRENT_STATE = NodePath("MainMenu")
 metadata/_custom_type_script = "uid://bxmjgbdhtdqgs"
+
+[node name="StartScene" type="Node" parent="GameStates" node_paths=PackedStringArray("dialogue", "animation", "enter_name")]
+script = ExtResource("7_owj8a")
+dialogue = NodePath("../../Dialogue")
+animation = NodePath("LoadingAnimation")
+dialogue_script = ExtResource("7_mm1kp")
+enter_name = NodePath("../../EnterName")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="LoadingAnimation" type="AnimationPlayer" parent="GameStates/StartScene"]
+root_node = NodePath("../../LoadEvent")
+libraries = {
+&"": SubResource("AnimationLibrary_7vtr8")
+}
+autoplay = "fade_out"
 
 [node name="PlayGifting" type="Node" parent="GameStates"]
 script = ExtResource("2_hkxpy")
@@ -149,39 +250,42 @@ metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="PlaySchedule" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
 script = ExtResource("4_yw4hp")
-schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
+schedule = NodePath("../../Schedule")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="CreateEventList" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule")]
+[node name="CreateList" type="Node" parent="GameStates" node_paths=PackedStringArray("schedule", "animation")]
 script = ExtResource("5_qp52p")
-schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
+schedule = NodePath("../../Schedule")
+animation = NodePath("../StartScene/LoadingAnimation")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="LoadNextEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("animation", "event_holder", "dialogue_screen", "schedule")]
+[node name="LoadEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("animation", "dialogue_screen", "schedule", "label")]
 script = ExtResource("3_qp52p")
-animation = NodePath("LoadingAnimation")
-event_holder = NodePath("../../SubViewportContainer/SubViewport/EventSceneHolder")
-dialogue_screen = NodePath("../../SubViewportContainer/SubViewport/Dialogue")
-schedule = NodePath("../../SubViewportContainer/SubViewport/Schedule")
+animation = NodePath("../StartScene/LoadingAnimation")
+dialogue_screen = NodePath("../../Dialogue")
+schedule = NodePath("../../Schedule")
+label = NodePath("../../Press to Continue")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
-
-[node name="LoadingAnimation" type="AnimationPlayer" parent="GameStates/LoadNextEvent"]
-libraries = {
-&"": SubResource("AnimationLibrary_7vtr8")
-}
-autoplay = "fade_out"
 
 [node name="PlayEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("dialogue")]
 script = ExtResource("11_7vtr8")
-dialogue = NodePath("../../SubViewportContainer/SubViewport/Dialogue")
+dialogue = NodePath("../../Dialogue")
+metadata/_custom_type_script = "uid://chcgesmdjhdd7"
+
+[node name="EndEvents" type="Node" parent="GameStates"]
+script = ExtResource("2_hkxpy")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="PauseMenu" type="Node" parent="GameStates" node_paths=PackedStringArray("pause_menu")]
 script = ExtResource("6_c70f3")
-pause_menu = NodePath("../../SubViewportContainer/SubViewport/PauseMenu")
+pause_menu = NodePath("../../PauseMenu")
 
-[node name="MainMenu" type="Node" parent="GameStates"]
+[node name="MainMenu" type="Node" parent="GameStates" node_paths=PackedStringArray("menu", "play", "quit", "animation")]
 script = ExtResource("7_06tgn")
+menu = NodePath("../../MainMenu")
+play = NodePath("../../MainMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/PlayButton")
+quit = NodePath("../../MainMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton")
+animation = NodePath("../StartScene/LoadingAnimation")
 
 [node name="AudioManager" type="Node" parent="."]
 
@@ -191,3 +295,5 @@ autoplay = true
 script = ExtResource("19_os1gl")
 
 [node name="SFX" type="AudioStreamPlayer" parent="AudioManager"]
+
+[editable path="MainMenu"]

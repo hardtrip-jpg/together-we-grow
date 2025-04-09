@@ -4,7 +4,7 @@ class_name PlayScheduleState
 @export var schedule : ScheduleManager
 
 func enter(_previous_state : State) -> void:
-	SignalManager.set_audio.emit(1, false)
+	SignalManager.set_audio.emit(2, false)
 	if _previous_state is PauseMenuState:
 		return
 	schedule.show()
@@ -20,7 +20,7 @@ func update(_delta : float) -> void:
 
 func done() -> void:
 	await schedule.schedule_set
-	transition.emit("CreateEventList")
+	transition.emit("CreateList")
 
 func exit() -> void:
 	pass

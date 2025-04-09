@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 class_name BGMusicManager
 
-var cur_song : int = 0
-var desired_song : int = 1
+var cur_song : int = 1
+var desired_song : int = 3
 
 func _ready() -> void:
 	SignalManager.set_audio.connect(set_audio)

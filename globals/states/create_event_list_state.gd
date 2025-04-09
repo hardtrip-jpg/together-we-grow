@@ -2,9 +2,10 @@ extends State
 class_name CreateEventList
 
 @export var schedule : ScheduleManager
+@export var animation : AnimationPlayer
 
 func enter(_previous_state: State) -> void:
-
+	animation.play("fade_in")
 	var events : Array = []
 	
 	Global.loaded_save.reset_currents()
@@ -20,15 +21,19 @@ func enter(_previous_state: State) -> void:
 	
 	for x in available_events:
 		if x.check(check):
+			print("Added: ", x)
 			Global.loaded_save.current_event_list.append(x)
 			var remove_at := Global.loaded_save.available_events.find(x)
 			Global.loaded_save.available_events.remove_at(remove_at)
 	
 	SignalManager.set_audio.emit(2, true)
 	print(Global.loaded_save.available_events)
+	
+	await animation.animation_finished
+	schedule.hide()
 
 
 func update(delta : float) -> void:
-	transition.emit("LoadNextEvent")
+	transition.emit("LoadEvent")
 	if Input.is_action_just_pressed("ui_cancel"):
-		SignalManager.pause_menu.emit("CreateEventList")
+		SignalManager.pause_menu.emit("CreateList")

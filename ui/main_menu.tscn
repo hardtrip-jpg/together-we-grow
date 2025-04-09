@@ -1,6 +1,94 @@
-[gd_scene load_steps=2 format=3 uid="uid://drjqff5dh6b8p"]
+[gd_scene load_steps=13 format=3 uid="uid://drjqff5dh6b8p"]
 
+[ext_resource type="FontFile" uid="uid://b3vvh6i8eu6se" path="res://ui/assets/Not Jam Mono Casual 10.ttf" id="1_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://cxdf856eri3xx" path="res://ui/assets/togetherwegrow_logowtext.png" id="1_t7e0r"]
+[ext_resource type="Texture2D" uid="uid://1f0p3rpnbj1l" path="res://ui/assets/leaf.png" id="2_wk0pr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyk7c"]
+bg_color = Color(0.241156, 0.241156, 0.241156, 0.733333)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyniw"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.733333)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7id8i"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 0.733333)
+border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="Theme" id="Theme_wk0pr"]
+default_font = ExtResource("1_0dkrt")
+default_font_size = 20
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 8
+Button/constants/h_separation = 6
+Button/constants/icon_max_width = 3
+Button/constants/line_spacing = 3
+Button/constants/outline_size = 9
+Button/font_sizes/font_size = 20
+Button/styles/hover = SubResource("StyleBoxFlat_fyk7c")
+Button/styles/normal = SubResource("StyleBoxFlat_xyniw")
+Button/styles/pressed = SubResource("StyleBoxFlat_7id8i")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_xyniw")
+RichTextLabel/colors/font_shadow_color = Color(0.109804, 0.109804, 0.109804, 0.572549)
+RichTextLabel/fonts/mono_font = ExtResource("1_0dkrt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmr83"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = ExtResource("2_wk0pr")
+texture_filter = 2
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+grow_amount = 0.786
+
+[sub_resource type="QuadMesh" id="QuadMesh_8uxxo"]
+material = SubResource("StandardMaterial3D_rmr83")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_wk0pr"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -42.309), 0.0, 0.0, 0, 0, Vector2(1, 54.8671), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_rmr83"]
+_limits = [-4.06975, 3.0, 0.0, 1.0]
+_data = [Vector2(0, -2.01899), 0.0, 0.0, 0, 0, Vector2(0.998901, 1.33972), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8uxxo"]
+_data = [Vector2(0.00549451, 0.0741279), 0.0, 0.0, 0, 0, Vector2(0.0912088, 0.981105), 0.850292, 0.850292, 0, 0, Vector2(0.636264, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="MainMenu" type="Control"]
 texture_filter = 1
@@ -10,19 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(640, 480)
-render_target_update_mode = 4
+theme = SubResource("Theme_wk0pr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -31,6 +107,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+modulate = Color(0.333333, 0.6, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer2/SubViewport"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="SubViewportContainer2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54503, 4.65521, -3.00183)
+amount = 23
+lifetime = 8.0
+randomness = 0.3
+mesh = SubResource("QuadMesh_8uxxo")
+emission_shape = 3
+emission_box_extents = Vector3(3, 0.2, 4)
+gravity = Vector3(0.5, -1, 0)
+angular_velocity_min = -0.5
+angular_velocity_max = 0.5
+angular_velocity_curve = SubResource("Curve_wk0pr")
+linear_accel_min = -0.5
+linear_accel_max = 0.5
+linear_accel_curve = SubResource("Curve_rmr83")
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_8uxxo")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -62,10 +175,10 @@ theme_override_constants/margin_right = 200
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Play"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
