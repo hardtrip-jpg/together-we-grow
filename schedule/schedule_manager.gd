@@ -133,6 +133,11 @@ func set_active_item(item : ScheduleItem) -> void:
 	print(selected.resource.item_name)
 
 func place_active_item() -> void:
+	if "money" in selected.resource:
+		if (Global.loaded_save.current_stats["money"] + selected.resource.money) < 0:
+			return
+
+	
 	var did : bool = false
 	for x : ScheduleSlot in can_activate:
 		var event_name := ""
@@ -143,5 +148,8 @@ func place_active_item() -> void:
 		x.activate(event_name, selected.resource.color)
 		cur_map.erase(x.pos)
 	if did:
+		if "money" in selected.resource:
+			Global.loaded_save.current_stats["money"] += selected.resource.money
+			money_label.text = "Money: " + str(Global.loaded_save.current_stats["money"]) + "$"
 		selected.queue_free()
 		#schedule_set.emit()

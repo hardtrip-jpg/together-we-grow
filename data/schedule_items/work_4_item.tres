@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="ScheduleItemResource" load_steps=2 format=3 uid="uid://bc4a0occiyeno"]
+[gd_resource type="Resource" script_class="ScheduleItemMoney" load_steps=2 format=3 uid="uid://khc5kaj63j36"]
 
-[ext_resource type="Script" uid="uid://bluwdt0ugteik" path="res://data/schedule_item_resource.gd" id="1_g86es"]
+[ext_resource type="Script" uid="uid://cyn620enqef3x" path="res://data/schedule_item_money.gd" id="1_4i3qf"]
 
 [resource]
-script = ExtResource("1_g86es")
-item_name = "Product in Testing"
-schedule_positions = [Vector2i(0, 0), Vector2i(0, -1), Vector2i(0, 1)]
+script = ExtResource("1_4i3qf")
+money = 3
+item_name = "Work - Product in Testing"
+schedule_positions = [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, -1)]
 required_age = Vector2(1, 3)
 symbol = "uid://dchsyorscsehq"
 color = Color(0.521569, 0.501961, 0.478431, 1)
-metadata/_custom_type_script = "uid://bluwdt0ugteik"
+metadata/_custom_type_script = "uid://cyn620enqef3x"
