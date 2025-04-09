@@ -2,12 +2,12 @@
 extends Resource
 class_name EventResource
 
-@export var required_stats : Dictionary
-@export var required_changes : Dictionary
-@export var required_scheduled : Array
+@export var required_stats : Dictionary[String, Array]
+@export var required_changes : Dictionary[String, Array]
+@export var required_scheduled : Array[String]
 @export var cutscene : CutsceneResource
 
-func _init(p_stats := {}, p_changes := {}, p_sched := [], p_scene := CutsceneResource.new()) -> void:
+func _init(p_stats : Dictionary[String, Array] = {"":[""]}, p_changes : Dictionary[String, Array] = {"":[""]}, p_sched : Array[String] = [""], p_scene := CutsceneResource.new()) -> void:
 	required_stats = p_stats
 	required_changes = p_changes
 	required_scheduled = p_sched
@@ -18,8 +18,9 @@ func check(p_check : CheckResource) -> bool:
 	var change_bool := false
 	var schedule_bool := false
 	
+	#looping through dictionary wrong
 	if required_stats.size() > 0:
-		for stat : String in required_stats:
+		for stat in required_stats:
 			if p_check.current_stats.find_key(stat):
 				if p_check.current_stats[stat] == required_stats[stat]:
 					stat_bool = true

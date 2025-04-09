@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://ctqr2oxdy84x0"]
+
+[ext_resource type="Resource" uid="uid://dvr1jdqmxgbvj" path="res://data/cutscenes/game_night_cutscene_VERY_BAD.tres" id="1_meadg"]
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="2_2h7jt"]
+
+[resource]
+script = ExtResource("2_2h7jt")
+required_stats = Dictionary[String, Array]({
+"age": [2, 3],
+"relationship": [3, 4]
+})
+required_changes = Dictionary[String, Array]({})
+required_scheduled = Array[String](["game_night_item"])
+cutscene = ExtResource("1_meadg")
+metadata/_custom_type_script = "uid://be1f3n5eby81"

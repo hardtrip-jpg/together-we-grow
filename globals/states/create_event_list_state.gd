@@ -16,7 +16,7 @@ func enter(_previous_state: State) -> void:
 				events.append(x.event.item_name)
 			print(x.global_position)
 	
-	var check := CheckResource.new({},{},events)
+	var check := CheckResource.new({"age": [2], "relationship": [4]},{},events)
 	var available_events := Global.loaded_save.available_events
 	
 	for x in available_events:
