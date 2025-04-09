@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("2_2h7jt")
 required_stats = Dictionary[String, Array]({
-"age": [2, 3],
 "relationship": [3, 4]
 })
 required_changes = Dictionary[String, int]({})

@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="EventResource" load_steps=2 format=3 uid="uid://5m407xa1cmqr"]
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://5m407xa1cmqr"]
 
 [ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_wotpb"]
+[ext_resource type="Script" uid="uid://qt0w7odfygwd" path="res://data/dialogue/help_homework_GOOD.gd" id="1_ywa8o"]
 
 [resource]
 script = ExtResource("1_wotpb")
-required_stats = Dictionary[String, Array]({})
+required_stats = Dictionary[String, Array]({
+"nerd": [0, 1, 2, 3, 4, 5]
+})
 required_changes = Dictionary[String, int]({})
-required_scheduled = Array[String]([])
+required_scheduled = Array[String](["Help Homework"])
+cutscene = ExtResource("1_ywa8o")
 metadata/_custom_type_script = "uid://be1f3n5eby81"

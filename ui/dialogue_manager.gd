@@ -16,7 +16,7 @@ var sprites : Dictionary = {
 	"baby":{"sad": "uid://cx6di2skjmvq2", "wail": "uid://c8jnmx6ulwyg3", "happy":"uid://dqcxje5ysduee", "neutral": "uid://dcq1mygndey6u"},
 	"athletic":{"main": "uid://bvgw2s6feo20p", "happy":"uid://i01dlt4swgqo", "sad":"uid://doah40yu2bpv5", "neutral":"uid://dcvx4utbedvij"},
 	"nerd":{"main": "uid://bvvv4wfdgmwpc", "happy":"uid://b4ud1n5y2n5p0", "sad":"uid://dqwboy7v1x3il", "neutral":"uid://ou1n4qsd8kjw"},
-	"rebel":{"rebel": "uid://xlvx5gm05yme", "happy":"uid://yr5mva7uovdn", "sad":"uid://c5ws04fsbubo1", "neutral":"uid://bu84rwxil12lj"},
+	"rebel":{"main": "uid://xlvx5gm05yme", "happy":"uid://yr5mva7uovdn", "sad":"uid://c5ws04fsbubo1", "neutral":"uid://bu84rwxil12lj"},
 	"loser":{"main": "uid://c0ww5t4amglv8", "happy":"uid://c0keiyvfrhujh", "sad":"uid://dngftoxdc3nl", "neutral":"uid://eqvlup28vwq4"},
 	"basic_teen":{"main":"uid://d3jb4wqkghmr3", "neutral":"uid://csxj4llbsy4iq"},
 	"nerd_teen":{"main":"uid://ctm2mr6mvvkrs", "neutral":"uid://kxiv2v0fknk0"},
