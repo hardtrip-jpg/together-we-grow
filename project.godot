@@ -44,6 +44,7 @@ folder_colors={
 "res://addons/rubonnek.dialogue_engine/documentation/": "gray",
 "res://data/": "purple",
 "res://events/": "pink",
+"res://gifting/": "green",
 "res://globals/": "orange",
 "res://music/": "yellow",
 "res://scenes/": "pink",

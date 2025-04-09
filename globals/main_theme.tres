@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://kejhe6c2n46k"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://kejhe6c2n46k"]
 
 [ext_resource type="FontFile" uid="uid://b3vvh6i8eu6se" path="res://ui/assets/Not Jam Mono Casual 10.ttf" id="1_k5hpa"]
+[ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="2_yexse"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyk7c"]
 bg_color = Color(0.241156, 0.241156, 0.241156, 0.733333)
@@ -38,7 +39,7 @@ corner_radius_bottom_left = 2
 anti_aliasing = false
 
 [resource]
-default_font = ExtResource("1_k5hpa")
+default_font = ExtResource("2_yexse")
 default_font_size = 20
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)

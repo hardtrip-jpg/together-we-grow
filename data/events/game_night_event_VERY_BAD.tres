@@ -9,7 +9,7 @@ required_stats = Dictionary[String, Array]({
 "age": [2, 3],
 "relationship": [3, 4]
 })
-required_changes = Dictionary[String, Array]({})
-required_scheduled = Array[String](["game_night_item"])
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Game Night"])
 cutscene = ExtResource("1_meadg")
 metadata/_custom_type_script = "uid://be1f3n5eby81"

@@ -9,7 +9,21 @@ class_name DialogueManager
 @export var character_face : TextureRect
 
 var current_bg : String
+var current_sprite : String
 var current_emoting : String
+
+var sprites : Dictionary = {
+	"baby":{"sad": "uid://cx6di2skjmvq2", "wail": "uid://c8jnmx6ulwyg3", "happy":"uid://dqcxje5ysduee", "neutral": "uid://dcq1mygndey6u"},
+	"athletic":{"main": "uid://bvgw2s6feo20p", "happy":"", "sad":"", "neutral":""},
+	"nerd":{"main": "uid://bvvv4wfdgmwpc", "happy":"", "sad":"", "neutral":""},
+	"rebel":{"rebel": "uid://xlvx5gm05yme", "happy":"", "sad":"", "neutral":""},
+	"loser":{"main": "uid://c0ww5t4amglv8", "happy":"", "sad":"", "neutral":""},
+	"basic_teen":{"main":"uid://d3jb4wqkghmr3", "neutral":""},
+	"nerd_teen":{"main":"uid://ctm2mr6mvvkrs", "neutral":""},
+	"loser_teen":{"main":"uid://ct1b3chjvk0th", "neutral":""},
+	"hacker_teen":{"main":"uid://r7luw2bosspo", "neutral":""},
+	"gang_teen":{"main":"uid://cf5vt70l4ln37", "neutral":""}
+}
 
 
 #@export var dialogue_gdscript : GDScript = null
@@ -53,6 +67,10 @@ func __on_dialogue_started() -> void:
 
 func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 	name_holder.hide()
+	if sprites[Global.loaded_save.current_sprite].get("main"):
+		if current_sprite != sprites[Global.loaded_save.current_sprite]["main"]:
+			current_sprite = sprites[Global.loaded_save.current_sprite]["main"]
+			character_bg.texture = load(current_sprite)
 	# Add the text to the log:
 	var current_data := p_dialogue_entry.get_metadata_data()
 	
@@ -65,9 +83,11 @@ func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 			current_bg = current_data["background"]
 			background.texture = load(current_bg)
 	if current_data.has("emotion"):
-		if current_data["emotion"] != current_emoting:
-			current_emoting = current_data["emotion"]
-			character_face.texture = load(current_emoting)
+		var emotion : String = current_data["emotion"]
+		if sprites[Global.loaded_save.current_sprite][emotion]:
+			if sprites[Global.loaded_save.current_sprite][emotion] != current_emoting:
+				current_emoting = sprites[Global.loaded_save.current_sprite][emotion]
+				character_face.texture = load(current_emoting)
 
 
 	dialogue_label.set_text(p_dialogue_entry.get_formatted_text())

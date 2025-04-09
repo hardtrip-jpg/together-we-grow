@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://be8wyx2yjthbk"]
+
+[ext_resource type="Theme" uid="uid://kejhe6c2n46k" path="res://globals/main_theme.tres" id="1_a3bel"]
+[ext_resource type="Texture2D" uid="uid://6oica0rdiwuk" path="res://ui/assets/gifting_bg.png" id="1_iagb4"]
+[ext_resource type="Script" uid="uid://cln2djcpicshm" path="res://gifting/gifting_screen.gd" id="2_kr4mb"]
+[ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="3_t5ktu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu31h"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.85098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5ktu"]
+bg_color = Color(0.242855, 0.355378, 0.438315, 0.631373)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Gifting" type="Control" node_paths=PackedStringArray("gifts_inventory", "money_label")]
+texture_filter = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a3bel")
+script = ExtResource("2_kr4mb")
+gifts_inventory = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HFlowContainer")
+money_label = NodePath("MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Label")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iagb4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fu31h")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_t5ktu")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("3_t5ktu")
+theme_override_font_sizes/font_size = 30
+text = "Pick a gift!"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+alignment = 1
+last_wrap_alignment = 2
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HFlowContainer"]
+layout_mode = 2
+text = "Xylophone
+5$"
+
+[node name="Button2" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HFlowContainer"]
+layout_mode = 2
+text = "Xylo
+5$"
+
+[node name="Button3" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HFlowContainer"]
+layout_mode = 2
+text = "Xylophone
+5$"
+
+[node name="Button4" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HFlowContainer"]
+layout_mode = 2
+text = "Xylophone
+5$"
+
+[node name="Button5" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/CenterContainer/HFlowContainer"]
+layout_mode = 2
+text = "Xylophone
+5$"
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Money: 5$"

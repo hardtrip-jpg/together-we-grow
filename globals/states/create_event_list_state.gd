@@ -16,7 +16,7 @@ func enter(_previous_state: State) -> void:
 				events.append(x.event.item_name)
 			print(x.global_position)
 	
-	var check := CheckResource.new({"age": [2], "relationship": [4]},{},events)
+	var check := CheckResource.new({"age": 2, "relationship": 4},{},events)
 	var available_events := Global.loaded_save.available_events
 	
 	for x in available_events:
@@ -27,13 +27,11 @@ func enter(_previous_state: State) -> void:
 			Global.loaded_save.available_events.remove_at(remove_at)
 	
 	SignalManager.set_audio.emit(2, true)
-	print(Global.loaded_save.available_events)
 	
 	await animation.animation_finished
+	print("checkingkasd")
 	schedule.hide()
 
 
 func update(delta : float) -> void:
 	transition.emit("LoadEvent")
-	if Input.is_action_just_pressed("ui_cancel"):
-		SignalManager.pause_menu.emit("CreateList")

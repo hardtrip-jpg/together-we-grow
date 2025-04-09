@@ -1,62 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://drjqff5dh6b8p"]
+[gd_scene load_steps=9 format=3 uid="uid://drjqff5dh6b8p"]
 
-[ext_resource type="FontFile" uid="uid://b3vvh6i8eu6se" path="res://ui/assets/Not Jam Mono Casual 10.ttf" id="1_0dkrt"]
 [ext_resource type="Texture2D" uid="uid://cxdf856eri3xx" path="res://ui/assets/togetherwegrow_logowtext.png" id="1_t7e0r"]
+[ext_resource type="Theme" uid="uid://kejhe6c2n46k" path="res://globals/main_theme.tres" id="1_wk0pr"]
 [ext_resource type="Texture2D" uid="uid://1f0p3rpnbj1l" path="res://ui/assets/leaf.png" id="2_wk0pr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyk7c"]
-bg_color = Color(0.241156, 0.241156, 0.241156, 0.733333)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xyniw"]
-bg_color = Color(0.141176, 0.141176, 0.141176, 0.733333)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7id8i"]
-bg_color = Color(0.0846899, 0.0846899, 0.0846899, 0.733333)
-border_color = Color(0.121569, 0.121569, 0.121569, 0.764706)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-anti_aliasing = false
-
-[sub_resource type="Theme" id="Theme_wk0pr"]
-default_font = ExtResource("1_0dkrt")
-default_font_size = 20
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/constants/align_to_largest_stylebox = 8
-Button/constants/h_separation = 6
-Button/constants/icon_max_width = 3
-Button/constants/line_spacing = 3
-Button/constants/outline_size = 9
-Button/font_sizes/font_size = 20
-Button/styles/hover = SubResource("StyleBoxFlat_fyk7c")
-Button/styles/normal = SubResource("StyleBoxFlat_xyniw")
-Button/styles/pressed = SubResource("StyleBoxFlat_7id8i")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_xyniw")
-RichTextLabel/colors/font_shadow_color = Color(0.109804, 0.109804, 0.109804, 0.572549)
-RichTextLabel/fonts/mono_font = ExtResource("1_0dkrt")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmr83"]
 transparency = 2
@@ -98,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_wk0pr")
+theme = ExtResource("1_wk0pr")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -168,8 +114,8 @@ expand_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_right = 225
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2

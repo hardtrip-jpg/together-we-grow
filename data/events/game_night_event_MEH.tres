@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_1g3vr")
 required_stats = Dictionary[String, Array]({})
-required_changes = Dictionary[String, Array]({})
-required_scheduled = ["game_night_item"]
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Game Night"])
 cutscene = ExtResource("1_hx1j2")
 metadata/_custom_type_script = "uid://be1f3n5eby81"

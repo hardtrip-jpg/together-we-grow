@@ -4,6 +4,7 @@ class_name ScheduleManager
 @export var schedule_inventory : VBoxContainer
 @export var schedule_holder : MarginContainer
 @export var button : Button
+@export var money_label : Label
 
 var cur_pos : Vector2
 var margin_container : MarginContainer
@@ -20,7 +21,11 @@ signal schedule_set
 
 func _ready() -> void:
 	Console.add_command("sche", command_schedule, ["Days", "Max", "Age", "Amount"], 4)
-	button.pressed.connect(func connecting() -> void: schedule_set.emit())
+	button.pressed.connect(ready_up)
+
+func ready_up() -> void:
+	schedule_set.emit()
+	button.disabled = true
 
 func command_schedule(days: String, max_day_in_week : String, age: String, amount: String) -> void:
 	init_schedule(int(days), int(max_day_in_week))
@@ -42,6 +47,8 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 	cur_map = []
 	can_activate = []
 	placed_items = {}
+	
+	money_label.text = "Money: " + str(Global.loaded_save.current_stats["money"]) + "$"
 	
 	var counter := 1
 	var days_left := days
@@ -73,6 +80,7 @@ func init_schedule(days : int, max_day_in_week : int) -> void:
 	
 	margin_container.add_child(week_holder)
 	schedule_holder.add_child(margin_container)
+	button.disabled = false
 
 func init_items(age : int, amount : int) -> void:
 	randomize()

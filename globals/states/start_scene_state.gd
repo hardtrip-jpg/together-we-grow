@@ -34,6 +34,5 @@ func dialogue_ended() -> void:
 	if is_on:
 		animation.play("fade_in")
 		await animation.animation_finished
-		animation.play("fade_out")
 		dialogue.hide()
-		transition.emit("PlaySchedule")
+		transition.emit("AgeTransition")

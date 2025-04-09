@@ -9,6 +9,7 @@ class_name LoadingState
 var current_index := 0
 
 func enter(_previous_state : State) -> void:
+	animation.play("fade_in")
 	label.modulate = Color(1,1,1,0)
 	label.hide()
 	if _previous_state is PlayScheduleState:
@@ -16,12 +17,9 @@ func enter(_previous_state : State) -> void:
 	await animation.animation_finished
 	
 	
-	if current_index >= Global.loaded_save.current_event_list.size():
+	if current_index >= Global.loaded_save.current_event_list.size() - 1:
 		dialogue_screen.is_active = false
-		animation.play("fade_in")
-		await animation.animation_finished
-		schedule.show()
-		transition.emit("PlaySchedule")
+		transition.emit("EndEvents")
 		return
 	
 	animation.play("fade_in_text")
@@ -31,13 +29,14 @@ func enter(_previous_state : State) -> void:
 	print(current_event.cutscene.dialogue)
 	dialogue_screen.active(current_event.cutscene.dialogue)
 	
-	current_index += 1
+
 
 func exit() -> void:
+	current_index += 1
 	animation.play("fade_out")
 
 func update(delta : float) -> void:
-	if Input.is_action_just_pressed("mouse_left") && current_index < Global.loaded_save.current_event_list.size():
+	if Input.is_action_just_pressed("mouse_left") && current_index < (Global.loaded_save.current_event_list.size() - 1):
 		label.hide()
 		label.modulate = Color(1,1,1,0)
 		transition.emit("PlayEvent")

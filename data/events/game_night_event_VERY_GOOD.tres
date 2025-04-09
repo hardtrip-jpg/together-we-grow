@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_k6ggx")
-required_stats = {}
-required_changes = {}
-required_scheduled = ["game_night_item"]
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Game Night"])
 cutscene = ExtResource("1_fnoth")
 metadata/_custom_type_script = "uid://be1f3n5eby81"

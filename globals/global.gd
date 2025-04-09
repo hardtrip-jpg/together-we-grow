@@ -20,6 +20,3 @@ func _ready() -> void:
 	for x in in_dir_s_item:
 		var loaded : ScheduleItemResource = load("res://data/schedule_items/" + x)
 		all_schedule_items.append(loaded)
-	
-	print(all_event_resources)
-	print(all_schedule_items)
