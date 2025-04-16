@@ -10,7 +10,7 @@ var gifts : Dictionary = {
 	3: {"Computer":{"price": 5,"nerd": 3, "rebel": 3},"DND":{"price": 2,"loser": 3},"Poster":{"price": 1,"rebel": 3},"Video Game":{"price": 3,"loser": 3, "nerd": 2},"Book":{"price": 1,"nerd": 3},"Shoes":{"price": 3, "athletic": 3}}
 }
 
-signal gift_selected
+signal gift_selected(likeness : String)
 
 func _ready() -> void:
 	init_giftshop()
@@ -26,12 +26,44 @@ func init_giftshop() -> void:
 		new_gift.gift_selected.connect(select_gift)
 
 func select_gift(gift : Dictionary) -> void:
+	var highest_stat : String
+	var highest_val : int = 0
+	for x : String in Global.loaded_save.current_stats:
+		if x == "relationship":
+			continue
+		if Global.loaded_save.current_stats[x] > highest_val:
+			highest_stat = x
+			highest_val = Global.loaded_save.current_stats[x]
+	
+	var highest_change : String
+	var gift_highest_val : int = 0
+	var lowest_change : String
+	var gift_lowest_val : int = 0
+	
+	
 	for x : String in gift:
 		var val : int = gift[x]
 		if x == "price":
 			val = val * -1
 			x = "money"
+			
+		if val > gift_highest_val:
+			highest_change = x
+			gift_highest_val = val
+		elif val < gift_lowest_val:
+			lowest_change = x
+			gift_lowest_val = val
+			
 		Global.loaded_save.current_stats[x] += val
 		print("Added ", val, " to ", x)
 	money_label.text = "Money: " + str(Global.loaded_save.current_stats["money"]) + "$"
-	gift_selected.emit()
+	
+	var likeness : String
+	if highest_stat == highest_change:
+		likeness = "good"
+	elif highest_stat == lowest_change:
+		likeness = "bad"
+	else:
+		likeness = "neutral"
+	
+	gift_selected.emit(likeness)

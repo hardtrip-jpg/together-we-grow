@@ -7,4 +7,5 @@ script = ExtResource("1_ksg8j")
 required_stats = Dictionary[String, Array]({})
 required_changes = Dictionary[String, int]({})
 required_scheduled = Array[String](["aaa"])
+name = ""
 metadata/_custom_type_script = "uid://be1f3n5eby81"

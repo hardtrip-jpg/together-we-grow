@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_fwe32")
-money = 3
+money = -3
 item_name = "Theme Park - 3$"
 schedule_positions = [Vector2i(0, 0)]
 required_age = Vector2(1, 3)

@@ -5,6 +5,7 @@ var loaded_save : SaveResource
 var all_event_resources : Array[EventResource] = []
 var all_schedule_items : Array[ScheduleItemResource] = []
 
+
 func _ready() -> void:
 	loaded_save = SaveResource.new()
 	loaded_save.available_events = all_event_resources

@@ -12,8 +12,7 @@ func _setup() -> void:
 		"emotion": "happy",
 		"music": [4, true]
 	})
-	add_text_entry("Thanks you so much! I love you!").set_metadata_data({
-		"author": Global.loaded_save.name,
+	add_text_entry("Hey! Congrats!").set_metadata_data({
 	})
 
 	Global.loaded_save.current_stats["relationship"] += 1

@@ -10,6 +10,7 @@ func _setup() -> void:
 			current_hightest_val = Global.loaded_save.current_stats[x]
 			current_high = x
 	
+	
 	if current_high == "rebel":
 		add_text_entry("I told you I didn't want you to drop me off").set_metadata_data({
 			"background": "uid://bxkyvvwbotjsf",

@@ -1,7 +1,7 @@
 extends Control
 class_name EnterNameScene
 
-@export var text_edit : TextEdit
+@export var text_edit : LineEdit
 @export var button : Button
 
 signal done_setting

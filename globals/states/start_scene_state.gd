@@ -27,6 +27,11 @@ func enter(_previous_state : State) -> void:
 	dialogue.is_active = true
 	dialogue.dialogue_engine.advance()
 
+func update(delta : float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		if enter_name.visible:
+			enter_name.set_name_baby()
+
 func exit() -> void:
 	is_on = false
 	

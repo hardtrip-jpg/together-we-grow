@@ -10,6 +10,7 @@ func _setup() -> void:
 			current_hightest_val = Global.loaded_save.current_stats[x]
 			current_high = x
 	
+	
 	match current_high:
 		"athletic":
 			add_text_entry("Grenade incoming! Soldier get down!").set_metadata_data({
@@ -22,7 +23,7 @@ func _setup() -> void:
 				"emotion": "sad"
 			})
 			add_text_entry("...")
-			add_text_entry("Phew, that was close").set_metadata_data({
+			add_text_entry("I'm ok!").set_metadata_data({
 				"author": Global.loaded_save.name,
 				"emotion": "happy"
 			})
@@ -36,7 +37,7 @@ func _setup() -> void:
 				"author": Global.loaded_save.name,
 			})
 			add_text_entry("...")
-			add_text_entry("Phew, that was close").set_metadata_data({
+			add_text_entry("He's alive!").set_metadata_data({
 				"author": Global.loaded_save.name,
 				"emotion": "happy"
 			})
@@ -68,6 +69,9 @@ func _setup() -> void:
 				"emotion": "neutral"
 			})
 			add_text_entry("Ok!").set_metadata_data({
+			})
+			add_text_entry("YIPPIE!").set_metadata_data({
+				"author": Global.loaded_save.name,
 				"emotion": "happy"
 			})
 	Global.loaded_save.current_stats["relationship"] += 1

@@ -109,6 +109,7 @@ func __on_dialogue_continued(p_dialogue_entry : DialogueEntry) -> void:
 
 
 func __on_dialogue_finished() -> void:
+	print("dialogue ended")
 	is_active = false
 	finished_dialogue.emit()
 	#hide()
