@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://cmf5qtikdd4iy"]
+
+[ext_resource type="Script" uid="uid://bx1p2vrxspf5c" path="res://data/dialogue/take_to_school.gd" id="1_1j6wi"]
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_eax2r"]
+
+[resource]
+script = ExtResource("1_eax2r")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Take to School"])
+cutscene = ExtResource("1_1j6wi")
+name = "Take to School"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

@@ -5,7 +5,7 @@ func _setup() -> void:
 		"background": "uid://dx1hiuvhigfmx",
 		"emotion": "neutral"
 	})
-	add_text_entry("In life, you must schedule. Are you ready to?").set_metadata_data({
+	add_text_entry("In life, you must schedule. Are you ready to...").set_metadata_data({
 		"emotion": "sad"
 	})
 	add_text_entry("WAHHHH WEHH WEEEHAHH").set_metadata_data(

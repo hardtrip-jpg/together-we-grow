@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://dy4o5ir2r820n"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_mnc01"]
+[ext_resource type="Script" uid="uid://bap7hqgarc15b" path="res://data/dialogue/pretend_play.gd" id="1_yd2fj"]
+
+[resource]
+script = ExtResource("1_mnc01")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Play Pretend"])
+cutscene = ExtResource("1_yd2fj")
+name = "Pretend Play"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

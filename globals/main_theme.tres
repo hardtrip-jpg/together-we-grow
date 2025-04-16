@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://kejhe6c2n46k"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://kejhe6c2n46k"]
 
 [ext_resource type="FontFile" uid="uid://b3vvh6i8eu6se" path="res://ui/assets/Not Jam Mono Casual 10.ttf" id="1_k5hpa"]
 [ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="2_yexse"]
@@ -38,6 +38,25 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3oio"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 10.0
+expand_margin_right = 5.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yexse"]
+bg_color = Color(0.333333, 0.6, 1, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+
 [resource]
 default_font = ExtResource("2_yexse")
 default_font_size = 20
@@ -56,3 +75,5 @@ Button/styles/pressed = SubResource("StyleBoxFlat_7id8i")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_xyniw")
 RichTextLabel/colors/font_shadow_color = Color(0.109804, 0.109804, 0.109804, 0.572549)
 RichTextLabel/fonts/mono_font = ExtResource("1_k5hpa")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_p3oio")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_yexse")

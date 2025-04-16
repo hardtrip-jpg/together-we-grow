@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://cp85a74ymjpp6"]
+
+[ext_resource type="Script" uid="uid://ekbm57jpdtrq" path="res://data/dialogue/game_night_dialogue_MID.gd" id="1_2gucp"]
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="2_w0dv2"]
+
+[resource]
+script = ExtResource("2_w0dv2")
+required_stats = Dictionary[String, Array]({
+"relationship": [5]
+})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Game Night"])
+cutscene = ExtResource("1_2gucp")
+name = "Game Night"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

@@ -11,7 +11,7 @@ func start() -> void:
 func enter(_previous_state : State) -> void:
 	is_on = true
 	dialogue.is_active = true
-	dialogue.dialogue_engine.advance()
+	#dialogue.dialogue_engine.advance()
 
 func update(delta : float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):

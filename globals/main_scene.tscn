@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://kejhe6c2n46k" path="res://globals/main_theme.tres" id="1_0w7fr"]
 [ext_resource type="PackedScene" uid="uid://brh8k65ai3tmv" path="res://schedule/schedule.tscn" id="1_hkxpy"]
 [ext_resource type="Script" uid="uid://bxmjgbdhtdqgs" path="res://globals/state_machine.gd" id="1_qc1yn"]
-[ext_resource type="Script" uid="uid://6l88orexr1xl" path="res://globals/enter_name_scene.gd" id="2_0w7fr"]
+[ext_resource type="Script" path="res://globals/enter_name_scene.gd" id="2_0w7fr"]
 [ext_resource type="Script" uid="uid://b6rmslkoeb5qx" path="res://globals/states/loading_state.gd" id="3_qp52p"]
 [ext_resource type="PackedScene" uid="uid://drjqff5dh6b8p" path="res://ui/main_menu.tscn" id="4_gd4ly"]
 [ext_resource type="Script" uid="uid://do65o2xsnrgm7" path="res://globals/states/play_schedule_state.gd" id="4_yw4hp"]
@@ -14,15 +14,15 @@
 [ext_resource type="Script" uid="uid://djcihd6844qlv" path="res://globals/states/main_menu_state.gd" id="7_06tgn"]
 [ext_resource type="Script" uid="uid://bffl83jp3qahe" path="res://data/dialogue/first_scene.gd" id="7_mm1kp"]
 [ext_resource type="PackedScene" uid="uid://bpqmavuw4i6xh" path="res://ui/dialogue.tscn" id="7_ot8wt"]
-[ext_resource type="Script" uid="uid://bss4ibch0mn2j" path="res://globals/states/start_scene_state.gd" id="7_owj8a"]
+[ext_resource type="Script" path="res://globals/states/start_scene_state.gd" id="7_owj8a"]
 [ext_resource type="FontFile" uid="uid://cs8k7wln2lsq0" path="res://ui/assets/Baby Doll.ttf" id="8_bh1yt"]
-[ext_resource type="Script" uid="uid://cytppvpbqg4fx" path="res://globals/states/play_gifting_state.gd" id="10_o5g26"]
+[ext_resource type="Script" path="res://globals/states/play_gifting_state.gd" id="10_o5g26"]
 [ext_resource type="Script" uid="uid://nso5nt18njct" path="res://globals/states/play_event_state.gd" id="11_7vtr8"]
-[ext_resource type="Script" uid="uid://cdx72nmvfbtb2" path="res://globals/states/age_transition_state.gd" id="12_u7r8e"]
+[ext_resource type="Script" path="res://globals/states/age_transition_state.gd" id="12_u7r8e"]
 [ext_resource type="AudioStream" uid="uid://u746ie5db7ne" path="res://music/bpm124/newdrumloop.mp3" id="14_7vtr8"]
 [ext_resource type="AudioStream" uid="uid://ba0ijcpbqtuer" path="res://music/bpm124/main-loop-babybells.wav" id="14_os1gl"]
 [ext_resource type="AudioStream" uid="uid://c17o5rjwx0e5q" path="res://music/bpm124/main-loop-bass-y.wav" id="15_7vtr8"]
-[ext_resource type="Script" uid="uid://bqukeekf77a6b" path="res://globals/states/end_events_state.gd" id="15_o5g26"]
+[ext_resource type="Script" path="res://globals/states/end_events_state.gd" id="15_o5g26"]
 [ext_resource type="AudioStream" uid="uid://mb36i8135gcb" path="res://music/bpm124/main-loop-dreamy.wav" id="16_owj8a"]
 [ext_resource type="AudioStream" uid="uid://dr7yov1jowlgo" path="res://music/bpm124/main-loop-playful.wav" id="17_mm1kp"]
 [ext_resource type="AudioStream" uid="uid://b01cn4adu3hu2" path="res://music/bpm124/main-loop_subtle.wav" id="18_0w7fr"]
@@ -217,6 +217,23 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="Label" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -11.5
+offset_right = 60.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0w7fr")
+text = "event name"
+
 [node name="AgeTransition" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -299,12 +316,13 @@ schedule = NodePath("../../Schedule")
 animation = NodePath("../StartScene/LoadingAnimation")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
-[node name="LoadEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("animation", "dialogue_screen", "schedule", "label")]
+[node name="LoadEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("animation", "dialogue_screen", "schedule", "label", "event_label")]
 script = ExtResource("3_qp52p")
 animation = NodePath("../StartScene/LoadingAnimation")
 dialogue_screen = NodePath("../../Dialogue")
 schedule = NodePath("../../Schedule")
 label = NodePath("../../Press to Continue")
+event_label = NodePath("../../ColorRect/Label")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="PlayEvent" type="Node" parent="GameStates" node_paths=PackedStringArray("dialogue")]

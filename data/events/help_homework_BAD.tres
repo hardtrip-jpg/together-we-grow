@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://chydro8npy02g"]
 
-[ext_resource type="Script" uid="uid://bv6lsm5o4nyso" path="res://data/dialogue/help_homework_BAD.gd" id="1_q8ya7"]
+[ext_resource type="Script" path="res://data/dialogue/help_homework_BAD.gd" id="1_q8ya7"]
 [ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_ueedd"]
 
 [resource]
@@ -11,4 +11,5 @@ required_stats = Dictionary[String, Array]({
 required_changes = Dictionary[String, int]({})
 required_scheduled = Array[String](["Help Homework"])
 cutscene = ExtResource("1_q8ya7")
+name = "Help with Homework"
 metadata/_custom_type_script = "uid://be1f3n5eby81"
