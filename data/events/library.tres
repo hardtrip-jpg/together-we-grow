@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://cjva2qx6xy0ba"]
+
+[ext_resource type="Script" uid="uid://nb1jf72qw3mk" path="res://data/dialogue/library.gd" id="1_bls1d"]
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_up6ee"]
+
+[resource]
+script = ExtResource("1_up6ee")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Visit Library"])
+cutscene = ExtResource("1_bls1d")
+name = "Library"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

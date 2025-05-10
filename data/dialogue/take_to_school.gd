@@ -27,21 +27,22 @@ func _setup() -> void:
 			"author": Global.loaded_save.name,
 		})
 		Global.loaded_save.current_stats["relationship"] -= 1
-		if Global.loaded_save.current_stats["relationship"] < 0:
-			Global.loaded_save.current_stats["relationship"] = 0
+		if Global.loaded_save.current_stats["relationship"] < 1:
+			Global.loaded_save.current_stats["relationship"] = 1
 	else:
-		add_text_entry("Thanks for taking me to school today").set_metadata_data({
+		add_text_entry("Thanks for the lift").set_metadata_data({
 			"background": "uid://bxkyvvwbotjsf",
 			"emotion" : "neutral",
 			"music": [3,false],
 			"author": Global.loaded_save.name
 		})
 		add_text_entry("No problem! You let me know whenever you need anything")
-		add_text_entry("Thanks! Love you!").set_metadata_data({
+		add_text_entry("Ok, got to get to class right now so I'll see you later!").set_metadata_data({
 			"author": Global.loaded_save.name
 		})
-		add_text_entry("Love you too!")
+		add_text_entry("Love you!")
 		Global.loaded_save.current_stats["relationship"] += 1
 		if Global.loaded_save.current_stats["relationship"] > 5:
 			Global.loaded_save.current_stats["relationship"] = 5
 		
+	Global.loaded_save.available_events.append(load("uid://cmf5qtikdd4iy"))

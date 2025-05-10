@@ -18,6 +18,8 @@ var current_stats : Dictionary = {
 	"money": 5,
 }
 
+var current_memory : Dictionary[String, String] = {"work": "6"}
+
 var current_sprite := "baby"
 var current_trait : Array[String]
 

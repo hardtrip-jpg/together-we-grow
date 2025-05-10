@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://6fxpn38rrssx"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_5awor"]
+[ext_resource type="Script" uid="uid://bow2tids7xy2s" path="res://data/dialogue/park_walk.gd" id="1_iik8q"]
+
+[resource]
+script = ExtResource("1_5awor")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Park Walk"])
+cutscene = ExtResource("1_iik8q")
+name = "Park Walk"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

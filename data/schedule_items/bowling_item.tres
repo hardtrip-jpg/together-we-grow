@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_0xtal")
-money = -1
+money = 0
 item_name = "Bowling - 1$"
 schedule_positions = [Vector2i(0, 0)]
-required_age = Vector2(1, 3)
+required_age = Vector2(2, 3)
 symbol = "uid://sosbjmtls226"
 color = Color(0.708002, 0.272709, 0.527938, 1)
 metadata/_custom_type_script = "uid://cyn620enqef3x"

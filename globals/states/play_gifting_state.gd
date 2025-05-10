@@ -23,9 +23,21 @@ func done() -> void:
 		1:
 			gifting_scene = load("uid://bk28e3eqiks32")
 		2:
-			pass
+			match set_scene:
+				"good":
+					gifting_scene = load("uid://b7kb3krjq0os7")
+				"bad":
+					gifting_scene = load("uid://ca4qlcecb4go7")
+				"neutral":
+					gifting_scene = load("uid://dunma0dxwag0p")
 		3:
-			pass
+			match set_scene:
+				"good":
+					gifting_scene = load("uid://gj75gpffd5rr")
+				"bad":
+					gifting_scene = load("uid://dpgp3gmg34w15")
+				"neutral":
+					gifting_scene = load("uid://dofn1r5d78oqd")
 	dialogue_screen.active(gifting_scene)
 	dialogue_screen.dialogue_engine.advance()
 	

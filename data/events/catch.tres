@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://brs6v5acrj7t2"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_afjwx"]
+[ext_resource type="Script" uid="uid://bhvo1ncbp1d4p" path="res://data/dialogue/catch.gd" id="1_bqlvg"]
+
+[resource]
+script = ExtResource("1_afjwx")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Catch"])
+cutscene = ExtResource("1_bqlvg")
+name = "Catch"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

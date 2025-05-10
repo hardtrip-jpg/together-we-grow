@@ -9,12 +9,6 @@ var finished : bool = false
 func enter(_previous_state : State) -> void:
 	animation.stop()
 	color.color = Color(0,0,0)
-	if Global.loaded_save.current_age >= 3:
-		finished = true
-		return
-	
-	Global.loaded_save.current_age += 1
-	
 	var current_hightest_val : int
 	var current_high : String
 	for x : String in Global.loaded_save.current_stats:
@@ -25,6 +19,15 @@ func enter(_previous_state : State) -> void:
 			current_high = x
 	
 	Global.loaded_save.current_trait.append(current_high)
+	
+	if Global.loaded_save.current_age >= 3:
+		finished = true
+		do_ending()
+		return
+	
+	Global.loaded_save.current_age += 1
+	
+	
 	
 	if Global.loaded_save.current_trait.size() >= 1:
 		Global.loaded_save.current_sprite = Global.loaded_save.current_trait[0]
@@ -52,10 +55,12 @@ func enter(_previous_state : State) -> void:
 			if new_sprite.length() == 0:
 				new_sprite = "basic_teen"
 			Global.loaded_save.current_sprite = new_sprite
-	
+
+func do_ending() -> void:
+	pass
 
 func update(delta : float) -> void:
 	if finished:
-		pass
+		transition.emit("EndGame")
 	else:
 		transition.emit("AgeTransition")

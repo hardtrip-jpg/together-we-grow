@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://dunjbjka810xi"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_7e4s7"]
+[ext_resource type="Script" uid="uid://cnnvpql0f7pgi" path="res://data/dialogue/tv_night.gd" id="1_lvrun"]
+
+[resource]
+script = ExtResource("1_7e4s7")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["TV Night"])
+cutscene = ExtResource("1_lvrun")
+name = "TV Night"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

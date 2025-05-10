@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://kxc6qn78q57n"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_aivwh"]
+[ext_resource type="Script" uid="uid://jk6agklbknia" path="res://data/dialogue/concert.gd" id="1_jlugd"]
+
+[resource]
+script = ExtResource("1_aivwh")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Concert - 2$"])
+cutscene = ExtResource("1_jlugd")
+name = "Concert"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

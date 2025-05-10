@@ -5,9 +5,9 @@ class_name GiftingManager
 @export var money_label : Label
 
 var gifts : Dictionary = {
-	1: {"Xylophone":{"price": 3,"nerd": 1, "loser": 1},"Puzzle":{"price": 3,"nerd": 2},"Ball":{"price": 2,"athletic": 2},"Shirt":{"price": 1,"loser": 2},"Movie VHS":{"price": 2,"rebel": 2}},
-	2: {"Computer":{"price": 5,"nerd": 2, "rebel": 2},"Sport Net":{"price": 3,"athletic": 2, "rebel": 1},"Poster":{"price": 1,"rebel": 2},"Book":{"price": 1,"loser": 1, "nerd": 1},"Ball":{"price": 1,"athletic": 1}, "Science Kit":{"price": 2, "nerd": 2}, "Figurine":{"price": 3, "loser": 2, "nerd": 1}},
-	3: {"Computer":{"price": 5,"nerd": 3, "rebel": 3},"DND":{"price": 2,"loser": 3},"Poster":{"price": 1,"rebel": 3},"Video Game":{"price": 3,"loser": 3, "nerd": 2},"Book":{"price": 1,"nerd": 3},"Shoes":{"price": 3, "athletic": 3}}
+	1: {"Xylophone":{"price": 3,"nerd": 1, "loser": 1},"Puzzle":{"price": 3,"nerd": 2},"Ball":{"price": 2,"athletic": 2},"Shirt":{"price": 1,"loser": 2},"Movie VHS":{"price": 2,"rebel": 2},"Socks":{"price": 0, "loser": 1}},
+	2: {"Computer":{"price": 5,"nerd": 2, "rebel": 2},"Sport Net":{"price": 3,"athletic": 2, "rebel": 1},"Poster":{"price": 1,"rebel": 2},"Book":{"price": 1,"loser": 1, "nerd": 1},"Ball":{"price": 1,"athletic": 1}, "Science Kit":{"price": 2, "nerd": 2}, "Figurine":{"price": 3, "loser": 2, "nerd": 1}, "Socks":{"price": 0}},
+	3: {"Computer":{"price": 5,"nerd": 3, "rebel": 3},"DND":{"price": 2,"loser": 3},"Poster":{"price": 1,"rebel": 3},"Video Game":{"price": 3,"loser": 3, "nerd": 2},"Book":{"price": 1,"nerd": 3},"Shoes":{"price": 3, "athletic": 3}, "Socks":{"price": 0}}
 }
 
 signal gift_selected(likeness : String)
@@ -31,7 +31,7 @@ func select_gift(gift : Dictionary) -> void:
 	for x : String in Global.loaded_save.current_stats:
 		if x == "relationship":
 			continue
-		if Global.loaded_save.current_stats[x] > highest_val:
+		if Global.loaded_save.current_stats[x] > highest_val && x != "money" :
 			highest_stat = x
 			highest_val = Global.loaded_save.current_stats[x]
 	
@@ -47,10 +47,10 @@ func select_gift(gift : Dictionary) -> void:
 			val = val * -1
 			x = "money"
 			
-		if val > gift_highest_val:
+		if val > gift_highest_val && x != "money":
 			highest_change = x
 			gift_highest_val = val
-		elif val < gift_lowest_val:
+		elif val < gift_lowest_val && x != "money":
 			lowest_change = x
 			gift_lowest_val = val
 			
@@ -62,8 +62,9 @@ func select_gift(gift : Dictionary) -> void:
 	if highest_stat == highest_change:
 		likeness = "good"
 	elif highest_stat == lowest_change:
-		likeness = "bad"
-	else:
 		likeness = "neutral"
-	
+	else:
+		likeness = "bad"
+	print("Highest stat: ", highest_stat)
+	print(likeness)
 	gift_selected.emit(likeness)

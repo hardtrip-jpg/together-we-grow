@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://bjtklybgn2mhj"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_lhp5k"]
+[ext_resource type="Script" uid="uid://qwllbfnn6g0d" path="res://data/dialogue/sport_game.gd" id="1_x31nn"]
+
+[resource]
+script = ExtResource("1_lhp5k")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Sports Game - 3$"])
+cutscene = ExtResource("1_x31nn")
+name = "Sports Game"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

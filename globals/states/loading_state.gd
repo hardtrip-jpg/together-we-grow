@@ -9,11 +9,13 @@ class_name LoadingState
 
 var current_index := 0
 var enabled := true
+var can_click := false
 
 func enter(_previous_state : State) -> void:
 	event_label.hide()
 	dialogue_screen.is_active = false
 	enabled = true
+	can_click = false
 	
 	if _previous_state is CreateEventList:
 		current_index = 0
@@ -40,11 +42,13 @@ func enter(_previous_state : State) -> void:
 	
 	if enabled == false:
 		dialogue_screen.is_active = false
+		dialogue_screen.hide()
 		transition.emit("EndEvents")
 		return
 	
 	animation.play("fade_in_text")
 	label.show()
+	can_click = true
 
 
 func exit() -> void:
@@ -54,7 +58,7 @@ func exit() -> void:
 	event_label.hide()
 
 func update(delta : float) -> void:
-	if Input.is_action_just_pressed("mouse_left") && enabled:
+	if Input.is_action_just_pressed("mouse_left") && enabled && can_click:
 		label.hide()
 		label.modulate = Color(1,1,1,0)
 		transition.emit("PlayEvent")

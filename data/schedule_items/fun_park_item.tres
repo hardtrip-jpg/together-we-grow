@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_hahpj")
-money = -2
+money = 0
 item_name = "Fun Park - 2$"
 schedule_positions = [Vector2i(0, 0), Vector2i(0, 1)]
 required_age = Vector2(1, 2)

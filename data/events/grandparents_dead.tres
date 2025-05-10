@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="EventResource" load_steps=2 format=3 uid="uid://dpy8gf2464kn5"]
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://dpy8gf2464kn5"]
 
+[ext_resource type="Script" uid="uid://batyurwqqaptl" path="res://data/dialogue/dead_grandparents.gd" id="1_k7qqq"]
 [ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_r8ngt"]
 
 [resource]
@@ -7,4 +8,6 @@ script = ExtResource("1_r8ngt")
 required_stats = Dictionary[String, Array]({})
 required_changes = Dictionary[String, int]({})
 required_scheduled = Array[String](["aaa"])
+cutscene = ExtResource("1_k7qqq")
+name = "Funeral"
 metadata/_custom_type_script = "uid://be1f3n5eby81"

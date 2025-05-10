@@ -21,11 +21,15 @@ func enter(_previous_state: State) -> void:
 	
 	for x in available_events:
 		if x.check(check):
-			print("Added: ", x)
 			Global.loaded_save.current_event_list.append(x)
+			print(x.name)
 			var remove_at := Global.loaded_save.available_events.find(x)
 			Global.loaded_save.available_events.remove_at(remove_at)
 	
+	if Global.loaded_save.current_age == 3 && Global.loaded_save.current_memory.has("grandparents"):
+		var random_pos := randi_range(0, Global.loaded_save.current_event_list.size() - 1)
+		Global.loaded_save.current_event_list.insert(random_pos, load("uid://dpy8gf2464kn5"))
+		
 	SignalManager.set_audio.emit(2, true)
 	
 	await animation.animation_finished

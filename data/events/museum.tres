@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://cjs3icl4ecrpf"]
+
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_iqe4u"]
+[ext_resource type="Script" uid="uid://d1epchemxna1q" path="res://data/dialogue/museum.gd" id="1_kqsjh"]
+
+[resource]
+script = ExtResource("1_iqe4u")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Museum - 1$"])
+cutscene = ExtResource("1_kqsjh")
+name = "Museum"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

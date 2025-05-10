@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EventResource" load_steps=3 format=3 uid="uid://yarjjydqbq50"]
+
+[ext_resource type="Script" uid="uid://7osco6vcbfrd" path="res://data/dialogue/bowling.gd" id="1_bj8ie"]
+[ext_resource type="Script" uid="uid://be1f3n5eby81" path="res://data/event_resource.gd" id="1_hs8bd"]
+
+[resource]
+script = ExtResource("1_hs8bd")
+required_stats = Dictionary[String, Array]({})
+required_changes = Dictionary[String, int]({})
+required_scheduled = Array[String](["Bowling - 1$"])
+cutscene = ExtResource("1_bj8ie")
+name = "Bowling"
+metadata/_custom_type_script = "uid://be1f3n5eby81"

@@ -22,6 +22,10 @@ func set_audio(song : int, drums : bool) -> void:
 
 func _process(delta: float) -> void:
 	if cur_song == desired_song:
+		var current_volume : float = stream.get_sync_stream_volume(desired_song)
+		if current_volume < 0:
+			var desired_volume : float = lerpf(current_volume, 1, 3 * delta)
+			stream.set_sync_stream_volume(desired_song, desired_volume)
 		return
 	
 	if stream.get_sync_stream_volume(desired_song) > 0:

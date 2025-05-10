@@ -28,7 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://dr7yov1jowlgo" path="res://music/bpm124/main-loop-playful.wav" id="17_mm1kp"]
 [ext_resource type="AudioStream" uid="uid://b01cn4adu3hu2" path="res://music/bpm124/main-loop_subtle.wav" id="18_0w7fr"]
 [ext_resource type="Script" uid="uid://d1vmpmq5dlpab" path="res://music/scripts/bg_music_manager.gd" id="19_os1gl"]
-[ext_resource type="Script" uid="uid://chcgesmdjhdd7" path="res://globals/state.gd" id="21_ey51l"]
+[ext_resource type="Script" uid="uid://css5uc52b3qp2" path="res://globals/states/end_game_state.gd" id="22_mjyet"]
 
 [sub_resource type="Animation" id="Animation_7vtr8"]
 length = 0.001
@@ -139,6 +139,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EnterName" type="Control" parent="." node_paths=PackedStringArray("text_edit", "button")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,6 +207,41 @@ visible = false
 layout_mode = 1
 theme = ExtResource("1_0w7fr")
 
+[node name="EndingScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0w7fr")
+
+[node name="ColorRect" type="ColorRect" parent="EndingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="EndingScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="EndingScreen/CenterContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "currently works in small video game store. They've worked long enough to rise to manager status with the hopes of reaching regional soon. They've also amased a small fortune through their trading card investments."
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -232,6 +268,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_0w7fr")
 text = "event name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AgeTransition" type="Control" parent="."]
 visible = false
@@ -353,8 +391,14 @@ play = NodePath("../../MainMenu/MarginContainer/VBoxContainer/MarginContainer/VB
 quit = NodePath("../../MainMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitButton")
 animation = NodePath("../StartScene/LoadingAnimation")
 
-[node name="EndGame" type="Node" parent="GameStates"]
-script = ExtResource("21_ey51l")
+[node name="EndGame" type="Node" parent="GameStates" node_paths=PackedStringArray("screen", "ending_label", "anim", "label", "age_trans", "age_label")]
+script = ExtResource("22_mjyet")
+screen = NodePath("../../EndingScreen")
+ending_label = NodePath("../../EndingScreen/CenterContainer/Label")
+anim = NodePath("../StartScene/LoadingAnimation")
+label = NodePath("../../Press to Continue")
+age_trans = NodePath("../../AgeTransition")
+age_label = NodePath("../../AgeTransition/CenterContainer/Label")
 metadata/_custom_type_script = "uid://chcgesmdjhdd7"
 
 [node name="AudioManager" type="Node" parent="."]

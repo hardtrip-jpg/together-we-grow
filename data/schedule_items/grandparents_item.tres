@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_a35n8")
-item_name = "Visit Parents"
+item_name = "Visit Grandparents"
 schedule_positions = [Vector2i(0, 0), Vector2i(-1, 1), Vector2i(1, 1)]
 required_age = Vector2(1, 3)
 symbol = "uid://dp8of3g1q2mlu"
